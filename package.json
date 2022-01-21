@@ -7,8 +7,8 @@
     "start": "nodemon ./server/index.js",
     "test": "test",
     "dev": "webpack",
-    "build": "webpack",
-    "lint": "eslint ./"
+    "lint": "eslint ./",
+    "seed": "./server/models/index.js"
   },
   "repository": {
     "type": "git",
