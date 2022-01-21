@@ -24,6 +24,7 @@
     "amazon-buddy": "^2.2.41",
     "express": "^4.17.2",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "passport": "^0.5.2",
     "react": "^17.0.2",
     "sequelize": "^6.13.0"
