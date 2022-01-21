@@ -1,0 +1,28 @@
+{
+  "name": "pentamatris",
+  "version": "1.0.0",
+  "description": "A new twist on a classic game",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rileydaviskatz/Pentamatris.git"
+  },
+  "author": "OG Tango",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rileydaviskatz/Pentamatris/issues"
+  },
+  "homepage": "https://github.com/rileydaviskatz/Pentamatris#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "amazon-buddy": "^2.2.41",
+    "express": "^4.17.2",
+    "mysql": "^2.18.1",
+    "passport": "^0.5.2",
+    "react": "^17.0.2",
+    "sequelize": "^6.13.0"
+  }
+}
