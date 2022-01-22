@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const { Sequelize } = require('sequelize');
 
-const models = require('./models')
+const models = require('./models');
+
+const path = require('path');
+const CLIENT_PATH = path.resolve(__dirname, '../dist');
 
 // const init = async () => {
 //   await models.sync({force: true}) // force true will drop the table if it already exists
@@ -18,7 +21,7 @@ app.listen(PORT, () => {
   console.log(`Serving listeng on ${PORT}`);
 })
 
-app.use(express.static('../client/src/index.html'));
+app.use(express.static(CLIENT_PATH));
 
 module.exports = {
   app,
