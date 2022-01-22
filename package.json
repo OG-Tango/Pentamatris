@@ -4,9 +4,9 @@
   "description": "A new twist on a classic game",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./server/index.js",
     "test": "test",
     "dev": "webpack",
-    "build": "webpack",
     "lint": "eslint ./"
   },
   "repository": {
