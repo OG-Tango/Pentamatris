@@ -1,24 +1,29 @@
 const express = require('express');
+const { engine } = require('express-handlebars');
 const app = express();
-const { Sequelize } = require('sequelize');
+const path = require('path');
+const { router } = require('./routes')
+
 
 const models = require('./models')
 
-// const init = async () => {
-//   await models.sync({force: true}) // force true will drop the table if it already exists
-//   console.log('Tables have synced!')
-// }
+const CLIENT_PATH = path.resolve(__dirname, "../dist");
 
-// init()
+app.engine('.hbs', engine({ extname: '.hbs', defaultLayout: "main"}));
+app.set('views', 'server/views');
+app.set('view engine', '.hbs');
+
 
 
 const PORT = 3000;
+
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`Serving listeng on ${PORT}`);
 })
 
-app.use(express.static('../client/src/index.html'));
+app.use(express.static(CLIENT_PATH));
 
 module.exports = {
   app,
