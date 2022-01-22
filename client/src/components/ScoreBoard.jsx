@@ -1,19 +1,48 @@
 import React from 'react';
+import axios from 'axios';
 
-const ScoreBoard = () => {
-  return (
-    <div id='score-board'>
-      <div className='high-sc'>
+class ScoreBoard extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      highScore: 0
+    }
+
+    this.getHighScore = this.getHighScore.bind(this);
+  }
+
+  getHighScore() {
+
+    axios.get('/score')
+      .then(score => {
+        this.setState({highScore: score});
+      })
+      .catch(err => {
+        console.log('Problem getting score', err);
+      });
+  }
+
+  // componentDidMount() {
+  //   this.getHighScore();
+  // }
+
+  render() {
+    const { highScore } = this.state;
+
+    return (
+      <div id='score-board'>
         <h4>HIGH SCORE</h4>
-        get user high-score from db here
-      </div>
-      <div className='game-sc'>
+        <div className='high-sc'>{highScore}</div>
         <h4>CURRENT SCORE</h4>
-        accumulate score as lines are cleared
+        <div className='game-sc'>
+          accumulate score as lines are cleared
+        </div>
+        <button className='go-to-lb' >LEADERBOARD</button>
       </div>
-      <button>LEADERBOARD</button>
-    </div>
-  );
+    );
+  }
+  
 };
 
 export default ScoreBoard;
