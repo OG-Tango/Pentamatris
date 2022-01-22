@@ -11,6 +11,8 @@ const Users = db.define('User', {
   high_score: Sequelize.INTEGER
 });
 
+Users.sync();
+
 const Favorites = db.define('Favorites', {
   id: {
     type: Sequelize.INTEGER,
@@ -19,10 +21,14 @@ const Favorites = db.define('Favorites', {
   text: Sequelize.STRING
 });
 
+Favorites.sync();
+
 const UserFaves = db.define('UserFaves', {
   user_id: Sequelize.INTEGER,
   faves_id: Sequelize.INTEGER
 });
+
+UserFaves.sync();
 
 module.exports = {
   Users,
