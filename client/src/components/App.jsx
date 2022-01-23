@@ -1,9 +1,10 @@
 import React from 'react';
+import Pentamatris from './Pentamatris.jsx';
 
 const App = () => {
   return (
-    <div>
-      Hello World!
+    <div className="App">
+      <Pentamatris />
     </div>
   );
 }
