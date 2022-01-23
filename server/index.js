@@ -9,6 +9,7 @@ const models = require('./models')
 
 const CLIENT_PATH = path.resolve(__dirname, "../dist");
 
+app.use(express.urlencoded({ extended: false}));
 app.engine('.hbs', engine({ extname: '.hbs', defaultLayout: "main"}));
 app.set('views', 'server/views');
 app.set('view engine', '.hbs');
