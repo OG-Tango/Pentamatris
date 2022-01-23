@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import LeaderBoard from './LeaderBoard.jsx';
 
 class ScoreBoard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      highScore: 0
+      highScore: 0,
+      gameScore: 0,
     }
 
     this.getHighScore = this.getHighScore.bind(this);
@@ -28,17 +30,20 @@ class ScoreBoard extends React.Component {
   // }
 
   render() {
-    const { highScore } = this.state;
+    const { highScore, gameScore } = this.state;
+    const { onClick } = this.props;
 
     return (
       <div id='score-board'>
         <h4>HIGH SCORE</h4>
         <div className='high-sc'>{highScore}</div>
         <h4>CURRENT SCORE</h4>
-        <div className='game-sc'>
-          accumulate score as lines are cleared
-        </div>
-        <button className='go-to-lb' >LEADERBOARD</button>
+        <div className='game-sc'>{gameScore}</div>
+        <button 
+          className='go-to-lb' 
+          onClick={onClick}
+        >LEADERBOARD</button>
+    
       </div>
     );
   }

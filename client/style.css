@@ -5,20 +5,36 @@
   border-style: solid;
   border-radius: 25px;
   padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 10px;
   width: 200px;
   margin-left: auto;
   margin-right: 0;
   margin-top: 150px
-};
+}
+
+#leader-board {
+  border-style: solid;
+  width: 500px;
+  height: 600px
+}
 
 .go-to-lb {
-  background-color:lightcoral ;
-  width: 75px;
-  border-radius: 25x;
-  margin: 0 auto
-};
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 50px;
+  margin-left: 37px
+}
 
 .high-sc {
   border-style: solid;
+  border-radius: 25px;
+  height: 25px
+}
+
+.game-sc {
+  border-style: solid;
+  border-radius: 25px;
+  height: 25px;
+  margin-bottom: 5px
 }
