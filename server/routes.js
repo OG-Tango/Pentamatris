@@ -1,16 +1,13 @@
 const { Router } = require('express');
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.render('home')
+
+router.get('/login', (req, res) => {
+  res.render('login')
 });
 
-router.post('', (req, res) => {
-
-});
-
-router.patch('', (req, res) => {
-
+router.get('/register', (req, res) => {
+  res.render('register')
 });
 
 module.exports = {
