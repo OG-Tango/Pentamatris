@@ -1,52 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import LeaderBoard from './LeaderBoard.jsx';
 
-class ScoreBoard extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      highScore: 0,
-      gameScore: 0,
-    }
+function ScoreBoard(props) {
 
-    this.getHighScore = this.getHighScore.bind(this);
-  }
+  const { onClick } = props;
+  const [highScore, setHighScore] = useState(0);
+  const [gameScore, setGameScore] = useState(0);
 
-  getHighScore() {
+  const getHighScore = () => {
 
     axios.get('/score')
       .then(score => {
-        this.setState({highScore: score});
+        setHighScore(score);
       })
       .catch(err => {
         console.log('Problem getting score', err);
       });
-  }
 
-  // componentDidMount() {
-  //   this.getHighScore();
-  // }
+  };
 
-  render() {
-    const { highScore, gameScore } = this.state;
-    const { onClick } = this.props;
-
-    return (
-      <div id='score-board'>
-        <h4>HIGH SCORE</h4>
-        <div className='high-sc'>{highScore}</div>
-        <h4>CURRENT SCORE</h4>
-        <div className='game-sc'>{gameScore}</div>
-        <button 
-          className='go-to-lb' 
-          onClick={onClick}
-        >LEADERBOARD</button>
+  // useEffect(() => {
+  //   getHighScore();
+  // })
     
-      </div>
-    );
-  }
+  return (
+    <div id='score-board'>
+      <h4>HIGH SCORE</h4>
+      <div className='high-sc'>{highScore}</div>
+      <h4>CURRENT SCORE</h4>
+      <div className='game-sc'>{gameScore}</div>
+      <button 
+        className='go-to-lb' 
+        onClick={onClick}
+      >LEADERBOARD</button>
+    
+    </div>
+  );
+  
   
 };
 
