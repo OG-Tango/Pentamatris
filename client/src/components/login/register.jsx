@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { default as signUpImg }  from '../images/sign-up.svg';
 
 
-export  function Register(){
-  
+export  function Register(props){
+
   return (
-    <div className='base-container'>
+    <div className='base-container' ref={props.containerRef}>
       <div className="header">Register</div>
       <div className="content">
         <div className="image">
@@ -29,6 +29,11 @@ export  function Register(){
       <div className="footer">
         <button type='button 'className="btn">
           Register
+        </button>
+      </div>
+      <div className="footer">
+        <button type='button 'className="btn">
+          Login
         </button>
       </div>
     </div>

@@ -1,14 +1,26 @@
-import React from 'react';
-import { Login, Register } from './login/index.jsx';
+import React, { useState , useEffect } from 'react';
+import { Login, Register, Toggle } from './login/index.jsx';
 import "../../app.scss"
 
 const App = () => {
+
+  const [userActive, setUserActive] = useState(1);
+  // const text = userActive ? 
+
+  
   return (
-    <div>
-      {/* <Login /> */}
-      <Register />
+    <div className="App">
+      <div className="login">
+        <div className="container">
+           {userActive && <Login/>}
+           {!userActive && <Register/>}
+        </div>
+      </div>
     </div>
+   
   );
 }
+
+
 
 export default App;
