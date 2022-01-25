@@ -22,7 +22,6 @@ router.post('/register', async function(req, res){
 
   try {
     const hashedP = await bcrypt.hash(password, 10);
-    console.log(hashedP);
     await Users.create({
       username: name,
       password: hashedP,
@@ -30,10 +29,10 @@ router.post('/register', async function(req, res){
     });
     res.redirect('/login');
   } catch {
-    console.error()
     res.redirect('/register');
   }
 });
+
 module.exports = {
   router
 };
