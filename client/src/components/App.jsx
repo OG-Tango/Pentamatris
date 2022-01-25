@@ -1,5 +1,6 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
+import Pentamatris from './Pentamatris.jsx';
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 
@@ -19,17 +20,20 @@ function App() {
       })
       .catch(err => console.log('Problem getting Top scores', err))
   };
-
   
   const showLeaders = () => {
     handleClick();
     getTopScores();
-  }
+  };
+
 
   return (
-    <div>
-      <ScoreBoard onClick={showLeaders}/>
-      { show ? <LeaderBoard topScores={topScores}/> : null} 
+    <div className="App">
+      <Pentamatris />
+      <div id='score-feat'>
+        <ScoreBoard onClick={showLeaders}/>
+        { show ? <LeaderBoard topScores={topScores}/> : null}
+      </div> 
     </div>
   );
   

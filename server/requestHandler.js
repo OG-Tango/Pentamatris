@@ -39,13 +39,6 @@ router.get('/leaders', (req, res) => {
   .catch(err => console.log('Failed get request to /leaders', err));
 });
 
-// app.post('', (req, res) => {
-
-// });
-
-// app.patch('', (req, res) => {
-
-// });
 
 module.exports = {
   router

@@ -19,7 +19,7 @@ const CLIENT_PATH = path.resolve(__dirname, '../dist');
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log(`Serving listeng on ${PORT}`);
+  console.log(`Serving listening on ${PORT}`);
 })
 
 app.use(express.static(CLIENT_PATH));
