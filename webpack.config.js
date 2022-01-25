@@ -22,6 +22,14 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   exclude: /node-modules/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     publicPath: 'assets',
+      //   },
+      // },
     ],
   },
   plugins: [

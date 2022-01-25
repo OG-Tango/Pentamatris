@@ -2,8 +2,8 @@ import React from "react";
 import { StyledStart } from "./styles/StyledStart";
 
 
-const Start = ({ cb }) => (
-  <StyledStart onClick={cb}>Start Game</StyledStart>
+const Start = ({ callback }) => (
+  <StyledStart onClick={callback}>Start Game</StyledStart>
 )
 
 export default Start;
