@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { default as signUpImg }  from '../images/sign-up.svg';
-
+import axios from 'axios';
 
 export  function Register(props){
 
@@ -22,6 +22,20 @@ export  function Register(props){
      
     }
 
+  function handleSubmit(){
+    console.log(state);
+    const { username, email, password } = state;
+    axios.post('/register', {
+      password: password,
+      email: email, 
+      username: username
+      
+    })
+     .then(res => console.log(res))
+     .catch(err => console.error(err));
+    
+  }
+
   return (
     <div className='base-container'>
       <div className="header">Register</div>
@@ -29,7 +43,7 @@ export  function Register(props){
         <div className="image">
           <img src={signUpImg}/>
         </div>
-        <div className="form">
+        <div className="form" >
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input type="text" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
@@ -44,8 +58,8 @@ export  function Register(props){
           </div>
         </div>
       </div>
-      <div className="footer">
-        <button type='button 'className="btn">
+      <div className="footer" >
+        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST'>
           Register
         </button>
       </div>

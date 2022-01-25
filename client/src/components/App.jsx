@@ -4,7 +4,7 @@ import "../../app.scss"
 
 const App = () => {
 
-  const [userActive, setUserActive] = useState(true);
+  const [userActive, setUserActive] = useState(false);
 
   function handleChange(boolean) {
     setUserActive(boolean);

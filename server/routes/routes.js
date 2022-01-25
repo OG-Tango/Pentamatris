@@ -1,15 +1,15 @@
 const { Router } = require('express');
 const router = Router();
 const bcrypt = require('bcrypt')
-const { Users} = require('./models');
+const { Users} = require('../models');
 const sequelize = require('sequelize');
 
 router.get('/login', (req, res) => {
-  res.render('login')
+  res.render('/login')
 });
 
 router.get('/register', (req, res) => {
-  res.render('register')
+  res.render('/register')
 });
 
 router.post('/login', (req, res) => {
@@ -17,19 +17,20 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/register', async function(req, res){
-  
-  const { password , name , email } = req.body
+  const { password , username , email } = req.body
 
   try {
     const hashedP = await bcrypt.hash(password, 10);
     await Users.create({
-      username: name,
+      username: username,
       password: hashedP,
       email: email
     });
-    res.redirect('/login');
+    console.log('success');
+    //  res.redirect('/');
   } catch {
-    res.redirect('/register');
+    console.error();
+    // res.redirect('/register');
   }
 });
 

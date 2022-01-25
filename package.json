@@ -23,11 +23,10 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "amazon-buddy": "^2.2.41",
+    "axios": "^0.25.0",
     "bcrypt": "^5.0.1",
     "express": "^4.17.2",
-    "express-handlebars": "^6.0.2",
     "file-loader": "^6.2.0",
-    "handlebars": "^4.7.7",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
     "passport": "^0.5.2",

@@ -42,7 +42,7 @@ export  function Login(props){
         </div>
       </div>
       <div className="footer">
-        <button type='button 'className="btn">
+        <button type='submit 'className="btn">
           Login
         </button>
       </div>
