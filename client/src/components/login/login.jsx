@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { default as loginImg } from '../images/login.svg';
 
 
 
 export  function Login(props){
+
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+})
+
+function handleChange(evt) {
+  const value = evt.target.value;
+   setState({
+    ...state,
+    [evt.target.classList.value]: value
+  });
+}
 
  
   return (
@@ -16,11 +29,11 @@ export  function Login(props){
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="name" className="name" placeholder='name'/>
+            <input type="username" className="username" value={state.username} onChange={handleChange}/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" placeholder='password'/>
+            <input type="password" className="password" value={state.password} onChange={handleChange}/>
           </div>
         </div>
       </div>

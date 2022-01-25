@@ -1,10 +1,10 @@
 import React, { useState , useEffect } from 'react';
-import { Login, Register, Toggle } from './login/index.jsx';
+import { Login, Register} from './login/index.jsx';
 import "../../app.scss"
 
 const App = () => {
 
-  const [userActive, setUserActive] = useState(false);
+  const [userActive, setUserActive] = useState(true);
 
   
   return (
