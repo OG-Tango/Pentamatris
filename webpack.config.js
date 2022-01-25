@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
+  devServer: {port: 3000},
   watch: true,
   entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
   output: {
@@ -21,6 +22,14 @@ module.exports = {
           },
         },
       },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   exclude: /node-modules/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     publicPath: 'assets',
+      //   },
+      // },
     ],
   },
   plugins: [
