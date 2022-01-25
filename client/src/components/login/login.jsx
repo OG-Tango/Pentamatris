@@ -8,16 +8,20 @@ export  function Login(props){
   const [state, setState] = useState({
     username: "",
     password: "",
-})
+  })
 
-function handleChange(evt) {
+  function handleChange(evt) {
   const value = evt.target.value;
    setState({
     ...state,
     [evt.target.classList.value]: value
   });
-}
+  }
 
+  function handleClick(event) {
+    props.onChange(event.target.value)
+     
+    }
  
   return (
     <div className='base-container' ref={props.containerRef}>
@@ -43,7 +47,7 @@ function handleChange(evt) {
         </button>
       </div>
       <div className="footer">
-        <button type='button 'className="btn">
+        <button type='button 'className="btn" onClick={handleClick}>
           Register
         </button>
       </div>
