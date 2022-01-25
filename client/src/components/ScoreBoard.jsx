@@ -4,9 +4,8 @@ import axios from 'axios';
 
 function ScoreBoard(props) {
 
-  const { onClick } = props;
+  const { onClick, gameScore } = props;
   const [highScore, setHighScore] = useState(0);
-  const [gameScore, setGameScore] = useState(0);
 
   const getHighScore = () => {
 

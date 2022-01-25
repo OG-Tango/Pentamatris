@@ -4,10 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App.jsx";
 import css from '../style.css';
-import $ from 'jquery';  
-import Popper from 'popper.js';  
-
-
+  
 
 ReactDOM.render(
   <App />, document.getElementById('app')
