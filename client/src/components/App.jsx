@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
 
 function App() {
-  
-  const [showComponent, setShowComponent] = useState(false);
+
+  const [show, setShow] = useState(false);
 
   const handleClick = () => {
-    setShowComponent(!showComponent);
+    setShow(!show);
   }
 
   return (
     <div>
       <ScoreBoard onClick={handleClick}/>
-      { showComponent ? <LeaderBoard /> : null }
+      { show ? <LeaderBoard /> : null} 
     </div>
   );
   

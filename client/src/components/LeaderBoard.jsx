@@ -1,8 +1,18 @@
 import React from 'react';
 
-const LeaderBoard = () => {
+function LeaderBoard() {
   return (
-    <div id='leader-board'>Hey, you there!</div>
+    <div id='leader-board'>
+      <h4>LEADERBOARD</h4>
+      <div className='all-leaders'>
+        <div className='leader'></div>
+        <div className='leader'></div>
+        <div className='leader'></div>
+        <div className='leader'></div>
+        <div className='leader'></div>
+      </div>
+      
+    </div>
   );
 };
 
