@@ -4,8 +4,7 @@ import "../../app.scss"
 
 const App = () => {
 
-  const [userActive, setUserActive] = useState(1);
-  // const text = userActive ? 
+  const [userActive, setUserActive] = useState(false);
 
   
   return (

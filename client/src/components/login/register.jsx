@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { default as signUpImg }  from '../images/sign-up.svg';
 
 
 export  function Register(props){
+
+  const [state, setState] = useState({
+      username: "",
+      email: "",
+      password: "",
+  })
+  function handleChange(evt) {
+    const value = evt.target.value;
+     setState({
+      ...state,
+      [evt.target.classList.value]: value
+    });
+  }
 
   return (
     <div className='base-container' ref={props.containerRef}>
@@ -14,15 +27,15 @@ export  function Register(props){
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="username" placeholder='username'/>
+            <input type="text" className="username" value={state.username} onChange={handleChange}/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="email" placeholder='email'/>
+            <input type="email" className="email" value={state.email} onChange={handleChange}/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" placeholder='password'/>
+            <input type="password" className="password" value={state.password} onChange={handleChange}/>
           </div>
         </div>
       </div>
