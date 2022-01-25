@@ -1,8 +1,10 @@
-const { app } = require('./index.js');
+const express = require('express'); 
+const router = express.Router();
+
 const Sequelize = require('sequelize');
 const { Users, Favorites, UserFaves } = require('./models');
 
-app.get('/score', (req, res) => {
+router.get('/score', (req, res) => {
   Users.findAll({
     attributes: ['high_score'],
     where: {
@@ -10,27 +12,41 @@ app.get('/score', (req, res) => {
     }
   })
   .then((score) => {
-    console.log(score, 12);
-    res.status(200).send(score);
+    // console.log(score[0].dataValues, 12);
+    const highScore = score[0].dataValues;
+    // console.log(highScore, 18);
+    res.status(200).send(highScore);
   })
   .catch(err => console.log('Failed get request to /score', err));
 
 });
 
-app.get('/leaders', (req, res) => {
+router.get('/leaders', (req, res) => {
   Users.findAll({
-    attributes: ['high-score']
+    attributes: ['username', 'high_score']
   })
-  .then((scores) => {
-    console.log(scores, 23);
+  .then((data) => {
+    // console.log(data, 23);
+    const scores = data.map((user) => user.dataValues);
+    // console.log(scores, 31);
+
+    const sortedScores = scores.sort((a, b) => b.high_score - a.high_score);
+    // console.log(sortedScores, 33);
+
+    const top5 = sortedScores.slice(0, 5);
+    res.status(200).send(top5);
   })
   .catch(err => console.log('Failed get request to /leaders', err));
 });
 
-app.post('', (req, res) => {
+// app.post('', (req, res) => {
 
-});
+// });
 
-app.patch('', (req, res) => {
+// app.patch('', (req, res) => {
 
-});
+// });
+
+module.exports = {
+  router
+};

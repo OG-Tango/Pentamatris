@@ -11,8 +11,9 @@ function ScoreBoard(props) {
   const getHighScore = () => {
 
     axios.get('/score')
-      .then(score => {
-        console.log(score, 15);
+      .then(res => {
+        // console.log(res.data.high_score, 15);
+        const score = res.data.high_score;
         setHighScore(score);
       })
       .catch(err => {

@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const { router } = require('./requestHandler.js')
+
 const models = require('./models');
 
 const path = require('path');
@@ -21,6 +23,7 @@ app.listen(PORT, () => {
 })
 
 app.use(express.static(CLIENT_PATH));
+app.use('/', router);
 
 module.exports = {
   app,

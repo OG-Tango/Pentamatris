@@ -1,27 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-function LeaderBoard() {
+function LeaderBoard(props) {
   //render the top 5 high scores from all users in the db into each leader div
-  const [topScores, settopScores] = useState([]);
-
-  const getTopScores = () => {
-    axios.get('/leaders')
-      .then(() => {
-
-      })
-      .catch(err => console.log('Problem getting Top scores', err))
-  }
+  const { topScores } = props;
 
   return (
     <div id='leader-board'>
       <h4>LEADERBOARD</h4>
       <div className='all-leaders'>
-        <div className='leader'></div>
-        <div className='leader'></div>
-        <div className='leader'></div>
-        <div className='leader'></div>
-        <div className='leader'></div>
+        <div className='leader'>
+          { topScores[0] ? `${topScores[0].username}   ${topScores[0].high_score}` : null }
+        </div>
+        <div className='leader'>
+          { topScores[1] ? `${topScores[1].username}   ${topScores[1].high_score}` : null }
+        </div>
+        <div className='leader'>
+          { topScores[2] ? `${topScores[2].username}   ${topScores[2].high_score}` : null }
+        </div>
+        <div className='leader'>
+          { topScores[3] ? `${topScores[3].username}   ${topScores[3].high_score}` : null }
+        </div>
+        <div className='leader'>
+          { topScores[4] ? `${topScores[4].username}   ${topScores[4].high_score}` : null }
+        </div>
       </div>
       
     </div>
