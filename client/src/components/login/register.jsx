@@ -17,8 +17,13 @@ export  function Register(props){
     });
   }
 
+  function handleClick(event) {
+    props.onChange(!(event.target.value))
+     
+    }
+
   return (
-    <div className='base-container' ref={props.containerRef}>
+    <div className='base-container'>
       <div className="header">Register</div>
       <div className="content">
         <div className="image">
@@ -27,15 +32,15 @@ export  function Register(props){
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="username" value={state.username} onChange={handleChange}/>
+            <input type="text" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="email" value={state.email} onChange={handleChange}/>
+            <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" value={state.password} onChange={handleChange}/>
+            <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
           </div>
         </div>
       </div>
@@ -45,7 +50,7 @@ export  function Register(props){
         </button>
       </div>
       <div className="footer">
-        <button type='button 'className="btn">
+        <button type='button 'className="btn" onClick={handleClick}>
           Login
         </button>
       </div>

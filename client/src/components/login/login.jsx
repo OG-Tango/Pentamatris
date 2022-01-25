@@ -24,7 +24,7 @@ export  function Login(props){
     }
  
   return (
-    <div className='base-container' ref={props.containerRef}>
+    <div className='base-container'>
       <div className="header">Login</div>
       <div className="content">
         <div className="image">
@@ -33,11 +33,11 @@ export  function Login(props){
         <div className="form">
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="username" className="username" value={state.username} onChange={handleChange}/>
+            <input type="username" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" value={state.password} onChange={handleChange}/>
+            <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
           </div>
         </div>
       </div>
