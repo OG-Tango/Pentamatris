@@ -1,13 +1,14 @@
 import React, { useState }from 'react';
 import { default as loginImg } from '../images/login.svg';
+import axios from 'axios';
 
 
 
 export  function Login(props){
 
   const [state, setState] = useState({
-    username: "",
     password: "",
+    email: "",
   })
 
   function handleChange(evt) {
@@ -22,6 +23,19 @@ export  function Login(props){
     props.onChange(event.target.value)
      
     }
+
+  function handleSubmit(){
+    
+      const { email, password } = state;
+      axios.post('/login', {
+        password: password,
+        email: email, 
+        
+      })
+       .then(res => console.log(res))
+       .catch(err => console.error(err));
+      
+    }
  
   return (
     <div className='base-container'>
@@ -32,8 +46,8 @@ export  function Login(props){
         </div>
         <div className="form">
           <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input type="username" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
+            <label htmlFor="email">Email</label>
+            <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
@@ -42,12 +56,12 @@ export  function Login(props){
         </div>
       </div>
       <div className="footer">
-        <button type='submit 'className="btn">
+        <button type='submit 'className="btn"  onClick={handleSubmit} action="/login" method = 'POST'>
           Login
         </button>
       </div>
       <div className="footer">
-        <button type='button 'className="btn" onClick={handleClick}>
+        <button type='button 'className="btn" onClick={handleClick} >
           Register
         </button>
       </div>

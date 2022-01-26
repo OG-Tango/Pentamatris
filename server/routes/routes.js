@@ -5,15 +5,15 @@ const { Users} = require('../models');
 const sequelize = require('sequelize');
 
 router.get('/login', (req, res) => {
-  res.render('/login')
+
 });
 
 router.get('/register', (req, res) => {
-  res.render('/register')
+
 });
 
 router.post('/login', (req, res) => {
-
+  console.log(req.body);
 });
 
 router.post('/register', async function(req, res){
