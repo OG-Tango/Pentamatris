@@ -5,7 +5,7 @@ const { router } = require('./routes/routes.js')
 const { Users } = require('./models')
 const passport = require('passport');
 
-
+require('./auth/passport-config')(passport);
 
 
 const models = require('./models');
@@ -17,7 +17,7 @@ app.use(express.json());
 
 
 const PORT = 3000;
-
+app.use(passport.initialize());
 app.use('/', router);
 
 app.listen(PORT, () => {
