@@ -39,6 +39,27 @@ router.get('/leaders', (req, res) => {
   .catch(err => console.log('Failed get request to /leaders', err));
 });
 
+router.get('/favorites', (req, res) => {
+  Favorites.findAll({
+    attributes: ['text'],
+    include: { 
+      model: UserFaves,
+      where: {
+        user_id: 3
+      }
+    },
+    where: {
+      id: faves_id,
+    }
+  })
+  .then((data) => {
+    console.log(data, 51);
+    res.status(200).send(data);
+  })
+  .catch(err => console.log('what? am i doing.', err));
+    
+})
+
 
 module.exports = {
   router

@@ -24,8 +24,10 @@ const Pentamatris = () => {
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
   const [showLeaders, setShowLeaders] = useState(false);
-  const [topScores, settopScores] = useState([]);
   const [showFaves, setShowFaves] = useState(false);
+  const [showRevs, setShowRevs] = useState(false);
+  const [topScores, settopScores] = useState([]);
+  const [faves, setFaves] = useState([]);
 
 
   const movePlayer = dir => {
@@ -100,17 +102,30 @@ const Pentamatris = () => {
     setShowLeaders(!showLeaders);
   };
 
-  const handleReviewsClick = () => {
+  const handleFavesClick = () => {
     setShowFaves(!showFaves);
-  }
+  };
+
+  const handleRevsClick = () => {
+    setShowRevs(!showRevs);
+  };
 
   const getTopScores = () => {
     axios.get('/leaders')
       .then((top5) => {
         settopScores(top5.data);
       })
-      .catch(err => console.log('Problem getting Top scores', err))
+      .catch(err => console.log('Problem getting Top scores', err));
   };
+
+  const getFavorites = () => {
+    axios.get('/favorites')
+      .then((faves) => {
+        console.log(faves, 124);
+        setFaves(faves.data);
+      })
+      .catch(err => console.log('Problem getting Favorite Reviews', err));
+  }
   
   const showLeaderBoard = () => {
     handleScoresClick();
@@ -118,7 +133,8 @@ const Pentamatris = () => {
   };
 
   const showFavorites = () => {
-    handleReviewsClick();
+    handleFavesClick();
+    getFavorites();
   };
 
 
@@ -132,8 +148,16 @@ const Pentamatris = () => {
             {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
             { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
-            <Reviews onClick={showFavorites} />
-            { showFaves ? <Favorites /> : null }
+            <button 
+              className='go-to-all-revs'
+              onClick={handleRevsClick}
+            >SEE REVIEWS</button>
+            <button 
+              className='go-to-faves'
+              onClick={showFavorites}
+            >SEE FAVORITES</button>
+            { showRevs ? <Reviews /> : null }
+            { showFaves ? <Favorites faves={faves}/> : null }
           </div>
           )}
           <Start callback={startGame} />

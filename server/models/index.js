@@ -21,9 +21,14 @@ Users.sync();
 const Favorites = db.define('Favorites', {
   id: {
     type: Sequelize.INTEGER,
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false
   },
   text: Sequelize.STRING
+},
+{
+  timestamps: false
 });
 
 Favorites.sync();
@@ -31,6 +36,9 @@ Favorites.sync();
 const UserFaves = db.define('UserFaves', {
   user_id: Sequelize.INTEGER,
   faves_id: Sequelize.INTEGER
+},
+{
+  timestamps: false
 });
 
 UserFaves.sync();

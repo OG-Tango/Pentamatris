@@ -1,16 +1,12 @@
 import React from "react";
 
-function Reviews(props) {
-  const { onClick } = props;
-
+function Reviews() {
   return (
-    <div id='review-sm'>
-      <h6>Reviews</h6>
-
-      <button 
-      className='go-to-faves'
-      onClick={onClick}
-      >FAVORITES</button>
+    <div id='revs-view'>
+      <h4>Your Reviews</h4>
+      <button
+        className='revs-to-faves'
+      >SEE FAVORITES</button>
     </div>
   );
 };
