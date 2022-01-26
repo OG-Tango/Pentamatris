@@ -12,6 +12,8 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
+import Reviews from './Reviews.jsx';
+import Favorites from "./Favorites.jsx";
 
 const Pentamatris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -21,8 +23,9 @@ const Pentamatris = () => {
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
-  const [show, setShow] = useState(false);
+  const [showLeaders, setShowLeaders] = useState(false);
   const [topScores, settopScores] = useState([]);
+  const [showFaves, setShowFaves] = useState(false);
 
 
   const movePlayer = dir => {
@@ -93,9 +96,13 @@ const Pentamatris = () => {
     drop();
   }, dropTime)
 
-  const handleClick = () => {
-    setShow(!show);
+  const handleScoresClick = () => {
+    setShowLeaders(!showLeaders);
   };
+
+  const handleReviewsClick = () => {
+    setShowFaves(!showFaves);
+  }
 
   const getTopScores = () => {
     axios.get('/leaders')
@@ -105,9 +112,13 @@ const Pentamatris = () => {
       .catch(err => console.log('Problem getting Top scores', err))
   };
   
-  const showLeaders = () => {
-    handleClick();
+  const showLeaderBoard = () => {
+    handleScoresClick();
     getTopScores();
+  };
+
+  const showFavorites = () => {
+    handleReviewsClick();
   };
 
 
@@ -119,9 +130,10 @@ const Pentamatris = () => {
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
             {/* <NextPiece /> */}
-            <ScoreBoard onClick={showLeaders} gameScore={score}/>
-            { show ? <LeaderBoard topScores={topScores}/> : null}
-            <Display text="Reviews"/>
+            <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
+            { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
+            <Reviews onClick={showFavorites} />
+            { showFaves ? <Favorites /> : null }
           </div>
           )}
           <Start callback={startGame} />

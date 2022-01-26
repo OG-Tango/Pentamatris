@@ -21,7 +21,7 @@ body {
   width: 200px;
   margin-left: auto;
   margin-right: 0;
-  margin-top: 150px
+  margin-bottom: 10px
 }
 
 #leader-board {
@@ -41,7 +41,7 @@ body {
   background-color:lightcoral;
   width: 125px;
   border-radius: 50px;
-  margin-left: 37px
+  margin-left: 26px
 }
 
 .high-sc {
@@ -69,4 +69,41 @@ body {
   width: 175px;
   text-align: center;
   padding-top: 25px
+}
+
+/* Styles for Reviews and Favorites */
+
+#review-sm {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#faves-view {
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+.go-to-faves {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 50px;
 }

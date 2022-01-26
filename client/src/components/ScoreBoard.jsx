@@ -27,9 +27,9 @@ function ScoreBoard(props) {
     
   return (
     <div id='score-board'>
-      <h4>HIGH SCORE</h4>
+      <h6>HIGH SCORE</h6>
       <div className='high-sc'>{highScore}</div>
-      <h4>CURRENT SCORE</h4>
+      <h6>CURRENT SCORE</h6>
       <div className='game-sc'>{gameScore}</div>
       <button 
         className='go-to-lb' 
