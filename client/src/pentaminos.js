@@ -16,7 +16,6 @@ export const PENTAMINOS = {
             ['T', 'T', 'T',],
             [0,   'T',  0, ],
             [0,   'T',  0, ],
-            
            ],
     color: '250, 173, 57',
   },
@@ -26,7 +25,6 @@ export const PENTAMINOS = {
             [0,   'P', 0],
             ['P', 'P', 0],
             ['P', 'P', 0],
-           
            ],
     color: '1, 236, 25',
   },

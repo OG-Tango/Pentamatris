@@ -1,8 +1,11 @@
 import React from "react";
-import { StyledNextPiece } from "./styles/StyledNextPiece";
+import { StyledNextPiece } from "./styles/StyledNextPiece.js";
+import Cell from "./Cell.jsx";
 
-const NextPiece = ({ next }) => (
-  <StyledNextPiece>NextPiece</StyledNextPiece>
+const NextPiece = ({ nextPiece }) => (
+  <StyledNextPiece>
+    {nextPiece.map(row => row.map((cell, x) => <Cell key ={x} type={cell[0]} />))}
+  </StyledNextPiece>
 )
 
 export default NextPiece;
