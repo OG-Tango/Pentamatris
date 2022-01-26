@@ -4,9 +4,10 @@ import { usePlayer } from "../hooks/usePlayer.js";
 import { useStage } from "../hooks/useStage.js";
 import Stage from "./Stage.jsx";
 import Display from "./Display.jsx";
+import { StyledStart } from "./styles/StyledStart.js";
 import Start from "./Start.jsx";
 import { useInterval } from "../hooks/useInterval.js";
-// import NextPiece from "./NextPiece.jsx";
+import NextPiece from "./NextPiece.jsx";
 import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPentamatris.js";
 import { useGameStatus } from "../hooks/useGameStatus.js";
 
@@ -54,7 +55,7 @@ const Pentamatris = () => {
 
   const keyUp =({ keyCode }) => {
     if(!gameOver) {
-      if(keyCode === 40) {
+      if(keyCode === 83) {
         setDropTime(1000 / (level + 1) + 200)
       }
     }
@@ -67,13 +68,13 @@ const Pentamatris = () => {
 
   const move = ({ keyCode }) => {
     if(!gameOver) {
-      if(keyCode === 37) {
+      if(keyCode === 65) {
         movePlayer(-1);
-      } else if(keyCode === 39) {
+      } else if(keyCode === 68) {
         movePlayer(+1);
-      } else if(keyCode === 40) {
+      } else if(keyCode === 83) {
         dropPlayer();
-      } else if(keyCode === 38) {
+      } else if(keyCode === 87) {
         playerRotate(stage, 1);
       }
     }
@@ -100,7 +101,7 @@ const Pentamatris = () => {
             <Display text="Reviews"/>
           </div>
           )}
-          <Start callback={startGame} />
+          <StyledStart callback={startGame} />
         </aside>
       </StyledPentamatris>
     </StyledPentamatrisWrapper>
