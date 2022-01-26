@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import { createStage, checkCollision } from "../helpers.js";
 import { usePlayer } from "../hooks/usePlayer.js";
 import { useStage } from "../hooks/useStage.js";
@@ -9,6 +10,8 @@ import { useInterval } from "../hooks/useInterval.js";
 // import NextPiece from "./NextPiece.jsx";
 import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPentamatris.js";
 import { useGameStatus } from "../hooks/useGameStatus.js";
+import ScoreBoard from './ScoreBoard.jsx';
+import LeaderBoard from './LeaderBoard.jsx';
 
 const Pentamatris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -17,6 +20,9 @@ const Pentamatris = () => {
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
+
+  const [show, setShow] = useState(false);
+  const [topScores, settopScores] = useState([]);
 
 
   const movePlayer = dir => {
@@ -87,6 +93,23 @@ const Pentamatris = () => {
     drop();
   }, dropTime)
 
+  const handleClick = () => {
+    setShow(!show);
+  };
+
+  const getTopScores = () => {
+    axios.get('/leaders')
+      .then((top5) => {
+        settopScores(top5.data);
+      })
+      .catch(err => console.log('Problem getting Top scores', err))
+  };
+  
+  const showLeaders = () => {
+    handleClick();
+    getTopScores();
+  };
+
 
   return (
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
@@ -96,7 +119,8 @@ const Pentamatris = () => {
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
             {/* <NextPiece /> */}
-            <Display text={`Score: ${score}`} />
+            <ScoreBoard onClick={showLeaders} gameScore={score}/>
+            { show ? <LeaderBoard topScores={topScores}/> : null}
             <Display text="Reviews"/>
           </div>
           )}
