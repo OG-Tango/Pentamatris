@@ -2,15 +2,18 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { router } = require('./routes/routes.js')
+const { Users } = require('./models')
+const passport = require('passport');
 
 
-const models = require('./models')
+
+
+const models = require('./models');
 
 const CLIENT_PATH = path.resolve(__dirname, "../dist");
 
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
-
 
 
 const PORT = 3000;
