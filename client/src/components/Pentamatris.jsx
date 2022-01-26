@@ -13,6 +13,8 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
+import ReviewTicker from "./Ticker.jsx";
+
 
 const Pentamatris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -113,7 +115,9 @@ const Pentamatris = () => {
 
 
   return (
+    
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
+      <ReviewTicker />
       <StyledPentamatris>
         <Stage stage={stage} />
         <aside>
