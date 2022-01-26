@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
-const { Sequelize } = require('sequelize');
 
-const models = require('./models')
+const { router } = require('./requestHandler.js')
+
+const models = require('./models');
+
 const path = require('path');
 const CLIENT_PATH = path.resolve(__dirname, '../dist');
 
@@ -17,12 +19,11 @@ const CLIENT_PATH = path.resolve(__dirname, '../dist');
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log(`Serving listeng on ${PORT}`);
+  console.log(`Serving listening on ${PORT}`);
 })
 
 app.use(express.static(CLIENT_PATH));
-
-
+app.use('/', router);
 
 module.exports = {
   app,
