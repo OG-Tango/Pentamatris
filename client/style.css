@@ -21,10 +21,11 @@ body {
   width: 200px;
   margin-left: auto;
   margin-right: 0;
-  margin-top: 150px
+  margin-bottom: 10px
 }
 
 #leader-board {
+  background-color:cornsilk;
   border-style: solid;
   border-radius: 25px;
   width: 250px;
@@ -41,7 +42,7 @@ body {
   background-color:lightcoral;
   width: 125px;
   border-radius: 50px;
-  margin-left: 37px
+  margin-left: 26px
 }
 
 .high-sc {
@@ -69,4 +70,62 @@ body {
   width: 175px;
   text-align: center;
   padding-top: 25px
+}
+
+/* Styles for Reviews and Favorites */
+
+#revs-view {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+#faves-view {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+.go-to-all-revs {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 25px;
+  margin-top: 5px
+}
+
+.go-to-faves {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 25px;
+  margin-top: 5px
+}
+
+.revs-to-faves {
+  background-color: lightcoral;
+  border-radius: 25px;
+  margin-top: auto;
+  margin-bottom: 5px
+}
+
+.faves-to-revs {
+  background-color: lightcoral;
+  border-radius: 25px;
+  margin-top: auto;
+  margin-bottom: 5px
 }

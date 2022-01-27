@@ -13,8 +13,13 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
+<<<<<<< HEAD
+import Reviews from './Reviews.jsx';
+import Favorites from "./Favorites.jsx";
+=======
 import ReviewTicker from "./Ticker.jsx";
 
+>>>>>>> a0b09cc5b5a2555ad98ab45321cd3412ccdac820
 
 const Pentamatris = () => {
   //state for how quickly pieces fall
@@ -31,8 +36,11 @@ const Pentamatris = () => {
   //state for the current score and unshown values for level and rows cleared
   const [score, setScore, rows, setRows, level, setLevel] = useGameStatus(rowsCleared);
 
-  const [show, setShow] = useState(false);
+  const [showLeaders, setShowLeaders] = useState(false);
+  const [showFaves, setShowFaves] = useState(false);
+  const [showRevs, setShowRevs] = useState(false);
   const [topScores, settopScores] = useState([]);
+  const [faves, setFaves] = useState([]);
 
   //function that checks if the player can move by checking collision with walls and other pieces
   const movePlayer = dir => {
@@ -112,8 +120,16 @@ const Pentamatris = () => {
     drop();
   }, dropTime)
 
-  const handleClick = () => {
-    setShow(!show);
+  const handleScoresClick = () => {
+    setShowLeaders(!showLeaders);
+  };
+
+  const handleFavesClick = () => {
+    setShowFaves(!showFaves);
+  };
+
+  const handleRevsClick = () => {
+    setShowRevs(!showRevs);
   };
 
   const getTopScores = () => {
@@ -121,12 +137,26 @@ const Pentamatris = () => {
       .then((top5) => {
         settopScores(top5.data);
       })
-      .catch(err => console.log('Problem getting Top scores', err))
+      .catch(err => console.log('Problem getting Top scores', err));
   };
+
+  const getFavorites = () => {
+    axios.get('/favorites')
+      .then((faves) => {
+        // console.log(faves, 124);
+        setFaves(faves.data);
+      })
+      .catch(err => console.log('Problem getting Favorite Reviews', err));
+  }
   
-  const showLeaders = () => {
-    handleClick();
+  const showLeaderBoard = () => {
+    handleScoresClick();
     getTopScores();
+  };
+
+  const showFavorites = () => {
+    handleFavesClick();
+    // getFavorites();
   };
 
 
@@ -139,9 +169,25 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
+<<<<<<< HEAD
+            {/* <NextPiece /> */}
+            <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
+            { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
+            <button 
+              className='go-to-all-revs'
+              onClick={handleRevsClick}
+            >SEE REVIEWS</button>
+            <button 
+              className='go-to-faves'
+              onClick={showFavorites}
+            >SEE FAVORITES</button>
+            { showRevs ? <Reviews /> : null }
+            { showFaves ? <Favorites faves={faves}/> : null }
+=======
             <ScoreBoard onClick={showLeaders} gameScore={score}/>
             { show ? <LeaderBoard topScores={topScores}/> : null}
             <Display text="Reviews"/>
+>>>>>>> a0b09cc5b5a2555ad98ab45321cd3412ccdac820
           </div>
           )}
           <StyledStart callback={startGame} />
