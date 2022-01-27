@@ -18,13 +18,14 @@ module.exports = passport => {
     } 
   
     if(user === null){
-      console.log('Cannot find user')
+      return done('Cannot find user')
     }
     try {
+      //need to change console logs after JWT sent
       if(await bcrypt.compare(password, user.password)){
-        console.log('success')
+        console.log(null,'success')
       } else {
-        console.log('Not Allowed');
+        console.log(null,'Not Allowed');
       }
     } catch (err) {
       console.error(err);
@@ -35,33 +36,33 @@ module.exports = passport => {
     }
   ));
 
-  const opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
-    secretOrKey: jwtSecret.secret,
-  };
+  // const opts = {
+  //   jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
+  //   secretOrKey: null,
+  // };
   
-  passport.use(
-    'jwt',
-    new JWTstrategy(opts, (jwt_payload, done) => {
-      try {
-        Users.findOne({
-          where: {
-            id: jwt_payload.id,
-          },
-        }).then(user => {
-          if (user) {
-            console.log('user found in db in passport');
-            // note the return removed with passport JWT - add this return for passport local
-            done(null, user);
-          } else {
-            console.log('user not found in db');
-            done(null, false);
-          }
-        });
-      } catch (err) {
-        done(err);
-      }
-    }),
-  );
+  // passport.use(
+  //   'jwt',
+  //   new Jwttrategy(opts, (jwt_payload, done) => {
+  //     try {
+  //       Users.findOne({
+  //         where: {
+  //           id: jwt_payload.id,
+  //         },
+  //       }).then(user => {
+  //         if (user) {
+  //           console.log('user found in db in passport');
+  //           // note the return removed with passport JWT - add this return for passport local
+  //           done(null, user);
+  //         } else {
+  //           console.log('user not found in db');
+  //           done(null, false);
+  //         }
+  //       });
+  //     } catch (err) {
+  //       done(err);
+  //     }
+  //   }),
+  // );
   
 }
