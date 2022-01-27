@@ -56,7 +56,7 @@ const options = {
   },
   headers: {
     'x-rapidapi-host': 'amazon-product-reviews-keywords.p.rapidapi.com',
-    'x-rapidapi-key': '6ea475079cmsh4d1b957e7d65f64p18c223jsnd527d2d7a58e'
+    'x-rapidapi-key': process.env.X-RAPIDAPI-KEY,
   }
 };
 

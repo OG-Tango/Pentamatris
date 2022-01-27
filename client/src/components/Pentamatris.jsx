@@ -139,7 +139,6 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaders} gameScore={score}/>
             { show ? <LeaderBoard topScores={topScores}/> : null}
             <Display text="Reviews"/>
