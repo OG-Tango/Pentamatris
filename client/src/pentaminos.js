@@ -16,7 +16,6 @@ export const PENTAMINOS = {
             ['T', 'T', 'T',],
             [0,   'T',  0, ],
             [0,   'T',  0, ],
-            
            ],
     color: '250, 173, 57',
   },
@@ -26,7 +25,6 @@ export const PENTAMINOS = {
             [0,   'P', 0],
             ['P', 'P', 0],
             ['P', 'P', 0],
-           
            ],
     color: '1, 236, 25',
   },
@@ -87,7 +85,7 @@ export const PENTAMINOS = {
             [ 'U',  0,  'U'],
             [ 'U', 'U', 'U'],
            ],
-    color: '124, 124, 124',
+    color: '0, 255, 222',
   },
 
   X: {
@@ -105,7 +103,7 @@ export const PENTAMINOS = {
             [   0,   'N',  0 ],
             [   0,   'N', 'N'],
            ],
-    color: '64, 62, 62',
+    color: '255, 51, 0',
   },
 
   Y: {
@@ -114,7 +112,7 @@ export const PENTAMINOS = {
             [  0, 'Y', 0 ],
             [ 'Y','Y', 0 ],
            ],
-    color: '134, 134, 134',
+    color: '0, 255, 171',
   },
 }
 
