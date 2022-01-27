@@ -1,5 +1,8 @@
 import { useEffect, useRef } from 'react';
 
+
+//this hook takes a callback function and delays it for a specific amount of time
+//that repeats when the timer hits 0
 export function useInterval(callback, delay) {
   const savedCallback = useRef();
   // Remember the latest callback.

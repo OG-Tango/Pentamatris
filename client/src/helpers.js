@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 export const STAGE_WIDTH = 15;
 export const STAGE_HEIGHT = 25;
 
@@ -23,8 +25,45 @@ export const checkCollision = (player, stage, { x: moveX, y: moveY}) => {
  }
 }
 
-export const createNextPieceBox = () =>
-  Array.from(Array(NEXT_PIECE_HEIGHT), () =>
-    new Array(NEXT_PIECE_WIDTH).fill([0, 'clear'])
-  )
+// export const createNextPieceBox = () =>
+//   Array.from(Array(NEXT_PIECE_HEIGHT), () =>
+//     new Array(NEXT_PIECE_WIDTH).fill([0, 'clear'])
+//   )
+
+export const generateASIN = (length) => {
+  var result           = 'B0';
+  var characters       = 'ABCDEFGHIJKLMNPQRSTUVWXYZ0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
+}
+
+console.log(generateASIN(8));
+
+const options = {
+  method: 'GET',
+  url: 'https://amazon-product-reviews-keywords.p.rapidapi.com/product/reviews',
+  params: {
+    asin: 'B07XQXZXJC',
+    page: '1',
+    country: 'US',
+    filter_by_star: '1',
+    variants: '1',
+    top: '0'
+  },
+  headers: {
+    'x-rapidapi-host': 'amazon-product-reviews-keywords.p.rapidapi.com',
+    'x-rapidapi-key': '6ea475079cmsh4d1b957e7d65f64p18c223jsnd527d2d7a58e'
+  }
+};
+
+axios.request(options).then(function (response) {
+	console.log(response.data);
+}).catch(function (error) {
+	console.error(error);
+});
+
 
