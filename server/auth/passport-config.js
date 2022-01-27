@@ -15,24 +15,38 @@ const PUB_KEY = fs.readFileSync(pathToKey, 'utf8');
 module.exports = passport => {
   passport.use('local',new LocalStrategy({
     usernameField: 'email',
-    session: false
+    session: false,
+    passReqToCallback: true
   },
-  async function(email, password, done) {
-  
+  async function(req, email, password, done) {
+    // console.log(req, 22);
+    // console.log(req.res, 23);
+    // console.log(res, 23);
     let user = await Users.findOne({ where: { email: email }})
     if (user !== null){
       user = user.dataValues
     } 
   
     if(user === null){
-      return done('Cannot find user')
+      return next('Cannot find user')
     }
     try {
       if(await bcrypt.compare(password, user.password)){
-        //  return done(null, user);
-          const JWT = sendJWT(user);
-          console.log(JWT, 34);
-         console.log(null, user);
+         
+          
+        const token = sendJWT(user)
+          
+      
+        passport.serializeUser(function(user, done) {
+           return done(null, user);
+          
+        });
+
+
+        
+          return done(null, user, token );
+      
+        
       } else {
 
         // return done(null, false)

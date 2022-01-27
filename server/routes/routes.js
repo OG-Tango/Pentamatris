@@ -5,6 +5,9 @@ const { Users} = require('../models');
 const passport = require('passport')
 const sequelize = require('sequelize');
 const LocalStrategy = require("passport-local");
+const sendJWT = require('../lib/utils.js')
+
+
 
 
 
@@ -27,9 +30,12 @@ router.get('/register', (req, res) => {
 router.post('/login', 
   passport.authenticate('local', { failureRedirect: '/' }),
   function(req, res) {
-    console.log('success' ,60);
-
-    res.sendStatus(200);
+    
+    const token = res.req.authInfo.token
+    
+    res.setHeader('authorization', token);
+    res.status(200).end();
+    console.log('success', 38); 
   });
 
 router.post('/register', async function(req, res){
