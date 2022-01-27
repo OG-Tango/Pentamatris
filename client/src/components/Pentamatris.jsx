@@ -13,8 +13,11 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
+<<<<<<< HEAD
+=======
 import Reviews from './Reviews.jsx';
 import Favorites from "./Favorites.jsx";
+>>>>>>> b65297d4e807fd5f0ef7d019be18568aab23b3d6
 import ReviewTicker from "./Ticker.jsx";
 
 
@@ -130,7 +133,7 @@ const Pentamatris = () => {
   };
 
   const getTopScores = () => {
-    axios.get('/leaders')
+    axios.get('/api/leaders')
       .then((top5) => {
         settopScores(top5.data);
       })
