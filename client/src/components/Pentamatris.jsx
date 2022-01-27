@@ -13,13 +13,8 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
-<<<<<<< HEAD
-import Reviews from './Reviews.jsx';
-import Favorites from "./Favorites.jsx";
-=======
 import ReviewTicker from "./Ticker.jsx";
 
->>>>>>> a0b09cc5b5a2555ad98ab45321cd3412ccdac820
 
 const Pentamatris = () => {
   //state for how quickly pieces fall
@@ -133,7 +128,7 @@ const Pentamatris = () => {
   };
 
   const getTopScores = () => {
-    axios.get('/leaders')
+    axios.get('/api/leaders')
       .then((top5) => {
         settopScores(top5.data);
       })
@@ -169,25 +164,9 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-<<<<<<< HEAD
-            {/* <NextPiece /> */}
-            <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
-            { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
-            <button 
-              className='go-to-all-revs'
-              onClick={handleRevsClick}
-            >SEE REVIEWS</button>
-            <button 
-              className='go-to-faves'
-              onClick={showFavorites}
-            >SEE FAVORITES</button>
-            { showRevs ? <Reviews /> : null }
-            { showFaves ? <Favorites faves={faves}/> : null }
-=======
             <ScoreBoard onClick={showLeaders} gameScore={score}/>
-            { show ? <LeaderBoard topScores={topScores}/> : null}
+            { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
             <Display text="Reviews"/>
->>>>>>> a0b09cc5b5a2555ad98ab45321cd3412ccdac820
           </div>
           )}
           <StyledStart callback={startGame} />
