@@ -33,7 +33,7 @@ router.post('/login',
     
     const token = res.req.authInfo.token
     
-    res.setHeader('authorization', token);
+    res.setHeader('Authorization', token);
     res.status(200).end();
     console.log('success', 38); 
   });
