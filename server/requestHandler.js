@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Sequelize = require('sequelize');
-const { Users, Favorites, UserFaves } = require('./models');
+const { Users, Favorites, User_Faves } = require('./models');
 
 router.get('/score', (req, res) => {
   Users.findAll({
@@ -40,23 +40,24 @@ router.get('/leaders', (req, res) => {
 });
 
 router.get('/favorites', (req, res) => {
-  Favorites.findAll({
-    attributes: ['text'],
+  Users.findAll({
     include: { 
-      model: UserFaves,
-      where: {
-        user_id: 3
-      }
+      model: Favorites,
     },
-    where: {
-      id: faves_id,
+    where: { 
+      id: 'REPLACE WITH LOGGED IN USER ID'
     }
   })
   .then((data) => {
-    console.log(data, 51);
-    res.status(200).send(data);
+    // console.log(data, 51);
+    
+    const userData = data[0].dataValues.Favorites
+    const userFaves = userData.map(fave => fave.dataValues.text);
+
+    console.log(userFaves, 56)
+    res.status(200).send(userFaves);
   })
-  .catch(err => console.log('what? am i doing.', err));
+  .catch(err => console.log('Failed get request to /favorites', err));
     
 })
 

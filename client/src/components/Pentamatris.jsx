@@ -122,7 +122,7 @@ const Pentamatris = () => {
   const getFavorites = () => {
     axios.get('/favorites')
       .then((faves) => {
-        console.log(faves, 124);
+        // console.log(faves, 124);
         setFaves(faves.data);
       })
       .catch(err => console.log('Problem getting Favorite Reviews', err));
@@ -135,7 +135,7 @@ const Pentamatris = () => {
 
   const showFavorites = () => {
     handleFavesClick();
-    getFavorites();
+    // getFavorites();
   };
 
 
