@@ -1,16 +1,21 @@
 const jsonwebtoken = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
+
+const pathToKey = path.join(__dirname, '..', 'ec_private.pem');
+const PRIV_KEY = fs.readFileSync(pathToKey, 'utf8');
 
 
 function sendJWT(userObj) {
-  const id = user.id;
+  const id = userObj.id;
   const expiresIn = '1d';
 
   const payload = {
     sub: id,
-    iat: Date.now().toString('hex')
+    iat: Date.now()
   };
 
-  const signedJWT = jsonwebtoken.sign(payload,key, { expiresIn: expiresIn, algorithm: 'ES256'})
+  const signedJWT = jsonwebtoken.sign(payload, PRIV_KEY, { expiresIn: expiresIn, algorithm: 'ES256'})
   
   return {
     token: `Bearer ${signedJWT}`,
@@ -18,4 +23,4 @@ function sendJWT(userObj) {
   }
 }
 
-module.export = sendJWT;
+module.exports = sendJWT;
