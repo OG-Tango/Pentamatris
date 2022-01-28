@@ -1,6 +1,9 @@
-const express = require('express');
-const app = express();
 const path = require('path');
+const express = require('express');
+const leadersRouter = require('./api/leaders');
+const externalRouter = require('./api/external');
+
+const app = express();
 const { router } = require('./routes/routes.js')
 const { Users } = require('./models')
 const passport = require('passport');
@@ -16,15 +19,20 @@ app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 
 
+
+
 const PORT = 3000;
 app.use(passport.initialize());
 app.use('/', router);
 
+app.use(express.static(CLIENT_PATH));
+app.use('/', router);
+app.use('/api/leaders', leadersRouter);
+app.use('/api/external', externalRouter);
 app.listen(PORT, () => {
-  console.log(`Serving listeng on ${PORT}`);
+  console.log(`Serving listening on ${PORT}`);
 })
 
-app.use(express.static(CLIENT_PATH));
 
 module.exports = {
   app,

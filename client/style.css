@@ -1,0 +1,131 @@
+/* Styles for main game */
+
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Pixel';
+  src: url(./font/Pixel.ttf);
+}
+
+/* Syles for score-board and leader-board */
+
+#score-board {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 10px
+}
+
+#leader-board {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+.go-to-lb {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 50px;
+  margin-left: 26px
+}
+
+.high-sc {
+  border-style: solid;
+  border-radius: 25px;
+  height: 25px
+}
+
+.game-sc {
+  border-style: solid;
+  border-radius: 25px;
+  height: 25px;
+  margin-bottom: 5px
+}
+
+.all-leaders {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leader {
+  border-bottom: solid;
+  height: 45px;
+  width: 175px;
+  text-align: center;
+  padding-top: 25px
+}
+
+/* Styles for Reviews and Favorites */
+
+#revs-view {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+#faves-view {
+  background-color:cornsilk;
+  border-style: solid;
+  border-radius: 25px;
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 165px; 
+  left: 125px; 
+}
+
+.go-to-all-revs {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 25px;
+  margin-top: 5px
+}
+
+.go-to-faves {
+  background-color:lightcoral;
+  width: 125px;
+  border-radius: 25px;
+  margin-top: 5px
+}
+
+.revs-to-faves {
+  background-color: lightcoral;
+  border-radius: 25px;
+  margin-top: auto;
+  margin-bottom: 5px
+}
+
+.faves-to-revs {
+  background-color: lightcoral;
+  border-radius: 25px;
+  margin-top: auto;
+  margin-bottom: 5px
+}

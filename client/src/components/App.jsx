@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react';
 import { Login, Register} from './login/index.jsx';
-import "../../app.scss"
+import Pentamatris from './Pentamatris.jsx';
 
 const App = () => {
 
@@ -12,16 +12,14 @@ const App = () => {
   
   return (
     <div className="App">
-      <div className="login">
-        <div className="container">
-           {userActive && <Login user={userActive} onChange={handleChange}/>}
-           {!userActive && <Register user={userActive} onChange={handleChange}/>}
-        </div>
-      </div>
+        {/* {userActive && <Login user={userActive} onChange={handleChange}/>}
+        {!userActive && <Register user={userActive} onChange={handleChange}/>} */}
+        <Pentamatris /> 
     </div>
-   
-  );
-}
+  )
+  
+
+};
 
 
 
