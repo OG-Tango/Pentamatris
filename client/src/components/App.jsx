@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState , useEffect } from 'react';
+import { Login, Register} from './login/index.jsx';
 import Pentamatris from './Pentamatris.jsx';
 
+const App = () => {
 
-function App() {
+  const [userActive, setUserActive] = useState(false);
 
+  function handleChange(boolean) {
+    setUserActive(boolean);
+  }
+  
   return (
     <div className="App">
-      <Pentamatris />
+        {/* {userActive && <Login user={userActive} onChange={handleChange}/>}
+        {!userActive && <Register user={userActive} onChange={handleChange}/>} */}
+        <Pentamatris /> 
     </div>
-  );
+  )
+  
 
 };
+
+
 
 export default App;
