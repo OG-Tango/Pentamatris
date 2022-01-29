@@ -32,7 +32,10 @@ export  function Login(props){
         email: email, 
         
       })
-       .then(res => console.log(res))
+       .then(res => {
+        console.log('id_token', res.headers.authorization);
+        localStorage.setItem('id_token', res.headers.authorization);
+       })
        .catch(err => console.error(err));
       
     }

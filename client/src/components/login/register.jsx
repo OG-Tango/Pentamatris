@@ -35,6 +35,7 @@ export  function Register(props){
      .catch(err => console.error(err));
     
   }
+  
 
   return (
     <div className='base-container'>
@@ -43,7 +44,7 @@ export  function Register(props){
         <div className="image">
           <img src={signUpImg}/>
         </div>
-        <div className="form" >
+        <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input type="text" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
@@ -56,10 +57,10 @@ export  function Register(props){
             <label htmlFor="password">Password</label>
             <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
           </div>
-        </div>
+        </form>
       </div>
       <div className="footer" >
-        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST'>
+        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST' >
           Register
         </button>
       </div>

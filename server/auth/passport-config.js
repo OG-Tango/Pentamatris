@@ -28,7 +28,7 @@ module.exports = passport => {
     } 
   
     if(user === null){
-      return next('Cannot find user')
+      return done('Cannot find user')
     }
     try {
       if(await bcrypt.compare(password, user.password)){

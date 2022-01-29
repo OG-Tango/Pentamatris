@@ -12,9 +12,9 @@ const App = () => {
   
   return (
     <div className="App">
-        {/* {userActive && <Login user={userActive} onChange={handleChange}/>}
-        {!userActive && <Register user={userActive} onChange={handleChange}/>} */}
-        <Pentamatris /> 
+        {userActive && <Login user={userActive} onChange={handleChange}/>}
+        {!userActive && <Register user={userActive} onChange={handleChange}/>} 
+        {/* <Pentamatris />  */}
     </div>
   )
   
