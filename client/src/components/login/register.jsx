@@ -23,7 +23,7 @@ export  function Register(props){
     }
 
   function handleSubmit(){
-    console.log(state);
+  
     const { username, email, password } = state;
     axios.post('/api/register', {
       password: password,
@@ -31,10 +31,13 @@ export  function Register(props){
       username: username
       
     })
-     .then(res => console.log(res))
+     .then(res => {
+       props.onChange(true);
+     })
      .catch(err => console.error(err));
     
   }
+  
 
   return (
     <div className='base-container'>
@@ -43,23 +46,23 @@ export  function Register(props){
         <div className="image">
           <img src={signUpImg}/>
         </div>
-        <div className="form" >
+        <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
+            <input type="text" className="username" defaultValue={state.username} onChange={handleChange} placeholder="username"/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" className="email" defaultValue={state.email} onChange={handleChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" className="password" defaultValue={state.password} onChange={handleChange} placeholder="password"/>
           </div>
-        </div>
+        </form>
       </div>
       <div className="footer" >
-        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST'>
+        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST' >
           Register
         </button>
       </div>

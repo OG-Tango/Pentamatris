@@ -16,9 +16,10 @@ import LeaderBoard from './LeaderBoard.jsx';
 import Reviews from './Reviews.jsx';
 import Favorites from "./Favorites.jsx";
 import ReviewTicker from "./Ticker.jsx";
+import LogOut  from "./logOut.jsx"
 
 
-const Pentamatris = () => {
+const Pentamatris = (props) => {
   //state for how quickly pieces fall
   const [dropTime, setDropTime] = useState(null);
   //state for if the game is over
@@ -215,6 +216,7 @@ const Pentamatris = () => {
           </div>
           )}
           <StyledStart callback={startGame} />
+          <LogOut logOut={props}/>
           { showLeaders ? <LeaderBoard topScores={topScores} close={closeLeaders}/> : null}
           { showRevs ? <Reviews close={closeReviews} swap={revsToFaves}/> : null }
           { showFaves ? <Favorites faves={faves} close={closeFaves} swap={revsToFaves}/> : null }

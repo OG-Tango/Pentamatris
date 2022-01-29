@@ -3,7 +3,7 @@ const loginRouter = express.Router();
 const passport = require('passport');
 
 loginRouter.post('/', 
-  passport.authenticate('local', { failureRedirect: '/' }),
+  passport.authenticate('local', { session: false }),
   function(req, res) {
     
     const token = res.req.authInfo.token
@@ -13,8 +13,5 @@ loginRouter.post('/',
     console.log('success', 38); 
   });
 
-  loginRouter.get('/', (req, res) => {
-
-  });
 
 module.exports = loginRouter;

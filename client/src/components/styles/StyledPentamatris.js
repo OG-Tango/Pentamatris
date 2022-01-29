@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-// import bgImg from '../images/bgImg.jpeg'
+import matrix from '../images/matrix.jpg'
 
 export const StyledPentamatrisWrapper = styled.div`
   width: 100vw;
   height: 100vh;
+  background: url(${matrix}) #000;
   background-size: cover;
   overflow: hidden;
 `
