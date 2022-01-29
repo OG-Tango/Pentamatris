@@ -4,7 +4,8 @@ import Pentamatris from './Pentamatris.jsx';
 
 const App = () => {
 
-  const [userActive, setUserActive] = useState(false);
+  const [userActive, setUserActive] = useState(true);
+  const [userLoggedIn, setUserLoggedIn] = useState(true);
 
   function handleChange(boolean) {
     setUserActive(boolean);
@@ -12,9 +13,9 @@ const App = () => {
   
   return (
     <div className="App">
-        {userActive && <Login user={userActive} onChange={handleChange}/>}
-        {!userActive && <Register user={userActive} onChange={handleChange}/>} 
-        {/* <Pentamatris />  */}
+        {!userLoggedIn && userActive && <Login user={userActive} onChange={handleChange}/>}
+        {!userLoggedIn && !userActive && <Register user={userActive} onChange={handleChange}/>} 
+        {userLoggedIn && userActive && <Pentamatris />} 
     </div>
   )
   

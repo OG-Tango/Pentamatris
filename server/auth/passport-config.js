@@ -19,9 +19,6 @@ module.exports = passport => {
     passReqToCallback: true
   },
   async function(req, email, password, done) {
-    // console.log(req, 22);
-    // console.log(req.res, 23);
-    // console.log(res, 23);
     let user = await Users.findOne({ where: { email: email }})
     if (user !== null){
       user = user.dataValues
@@ -31,29 +28,15 @@ module.exports = passport => {
       return done('Cannot find user')
     }
     try {
-      if(await bcrypt.compare(password, user.password)){
-         
-          
+      if(await bcrypt.compare(password, user.password)){  
         const token = sendJWT(user)
-          
-      
-       
-
-        
           return done(null, user, token );
-      
-        
       } else {
-
-        // return done(null, false)
-        console.log(null,false);
+        return done(null, false)
       }
     } catch (err) {
-      console.error(err);
+      return done(err);
     }
-    
-    
-      
     }
   ));
 
