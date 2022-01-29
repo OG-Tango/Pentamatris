@@ -19,9 +19,8 @@ router.get('/register', (req, res) => {
 
 
 router.post('/login', 
-  passport.authenticate('local', { session: false }),
+  passport.authenticate('local', { session: false, failureRedirect: '/' }),
   function(req, res) {
-    
     const token = res.req.authInfo.token
     
     res.setHeader('Authorization', token);
