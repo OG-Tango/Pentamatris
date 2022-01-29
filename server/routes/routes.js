@@ -33,14 +33,17 @@ router.post('/login',
 router.post('/register', async function(req, res){
   const { password , username , email } = req.body
   try {
+  
     const hashedP = await bcrypt.hash(password, 10);
     await Users.create({
       username: username,
       password: hashedP,
       email: email
     });
+
+    
     console.log('success');
-    //  res.redirect('/');
+     res.redirect('/');
   } catch {
     console.error();
     // res.redirect('/register');

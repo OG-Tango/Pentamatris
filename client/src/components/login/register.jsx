@@ -23,7 +23,7 @@ export  function Register(props){
     }
 
   function handleSubmit(){
-    console.log(state);
+  
     const { username, email, password } = state;
     axios.post('/register', {
       password: password,
@@ -31,7 +31,9 @@ export  function Register(props){
       username: username
       
     })
-     .then(res => console.log(res))
+     .then(res => {
+       props.onChange(true);
+     })
      .catch(err => console.error(err));
     
   }
