@@ -145,7 +145,7 @@ const Pentamatris = () => {
       })
       .catch(err => console.log('Problem getting Favorite Reviews', err));
   }
-  
+
   const showLeaderBoard = () => {
     handleScoresClick();
     getTopScores();
@@ -158,7 +158,7 @@ const Pentamatris = () => {
 
 
   return (
-    
+
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
       <ReviewTicker />
       <StyledPentamatris>
@@ -166,14 +166,13 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
             { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
-            <button 
+            <button
               className='go-to-all-revs'
               onClick={handleRevsClick}
             >SEE REVIEWS</button>
-            <button 
+            <button
               className='go-to-faves'
               onClick={showFavorites}
             >SEE FAVORITES</button>
