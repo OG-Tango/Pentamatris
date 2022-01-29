@@ -50,7 +50,7 @@ export  function Login(props){
         <div className="image">
           <img src={loginImg}/>
         </div>
-        <div className="form">
+        <form>
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
@@ -59,7 +59,7 @@ export  function Login(props){
             <label htmlFor="password">Password</label>
             <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
           </div>
-        </div>
+        </form>
       </div>
       <div className="footer">
         <button type='submit 'className="btn"  onClick={handleSubmit} action="/login" method = 'POST'>
