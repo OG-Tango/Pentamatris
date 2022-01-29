@@ -49,20 +49,20 @@ export  function Register(props){
         <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="username" value={state.username} onChange={handleChange} placeholder="username"/>
+            <input type="text" className="username" defaultValue={state.username} onChange={handleChange} placeholder="username"/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" className="email" defaultValue={state.email} onChange={handleChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" className="password" defaultValue={state.password} onChange={handleChange} placeholder="password"/>
           </div>
         </form>
       </div>
       <div className="footer" >
-        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST' >
+        <button type='submit 'className="btn" onClick={handleSubmit} action="/api/register" method = 'POST' >
           Register
         </button>
       </div>
