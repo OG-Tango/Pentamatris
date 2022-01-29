@@ -1,4 +1,5 @@
 const path = require('path');
+const dotenv = require('dotenv');
 dotenv.config({path: path.resolve(__dirname, '../.env')});
 
 const express = require('express');
@@ -24,7 +25,7 @@ app.use(express.json());
 
 const PORT = 3000;
 app.use(passport.initialize());
-app.use('/', router);
+// app.use('/', router);
 
 app.use(express.static(CLIENT_PATH));
 app.use('/api/leaders', leadersRouter);
