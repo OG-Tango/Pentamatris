@@ -185,7 +185,7 @@ const Pentamatris = () => {
 
 
   return (
-    
+
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
       <ReviewTicker />
       <StyledPentamatris>
@@ -193,13 +193,12 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
             <button 
               className='go-to-revs'
               onClick={handleRevsClick}
             >SEE REVIEWS</button>
-            <button 
+            <button
               className='go-to-faves'
               onClick={showFavorites}
             >SEE FAVORITES</button>

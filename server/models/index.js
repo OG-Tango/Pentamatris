@@ -1,14 +1,9 @@
 const Sequelize = require('sequelize');
 const { db } = require('../db/index.js');
 
-const Users = db.define('Users', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false
-  },
+const Users = db.define('User', {
   username: Sequelize.STRING,
+  email: Sequelize.STRING,
   password: Sequelize.STRING,
   high_score: Sequelize.INTEGER
 },
