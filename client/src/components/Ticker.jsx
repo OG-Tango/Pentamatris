@@ -21,7 +21,13 @@ const ReviewTicker = () => {
 
   return (
     <Marquee pauseOnHover="true" speed={50}>  
-      {global.map((fave) => <div>{fave}</div>)}
+      {global.map((fave) => {
+        return (
+          <div>{fave} &emsp; &emsp;</div>
+
+        )
+        })
+      }
     </Marquee>
   )
   
