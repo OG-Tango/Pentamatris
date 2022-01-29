@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require("passport-local");
 const bcrypt = require('bcrypt');
 const { Users } = require('../models');
-const JwtStrategy = require('passport-jwt').Strategy
+const JWTStrategy = require('passport-jwt').Strategy
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 const fs = require('fs');
 const path = require('path');
@@ -62,22 +62,20 @@ module.exports = passport => {
   ));
 
   const opts = {
-    jwtFromRequest: ExtractJWT.fromAuthHeaderWithScheme('JWT'),
+    jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: PUB_KEY,
   };
-  
   passport.use(
     'jwt',
-    new JwtStrategy(opts, (jwt_payload, done) => {
+    new JWTStrategy(opts, (jwt_payload, done) => {
       try {
         Users.findOne({
           where: {
-            id: jwt_payload.id,
+            id: jwt_payload.sub,
           },
         }).then(user => {
           if (user) {
             console.log('user found in db in passport');
-            // note the return removed with passport JWT - add this return for passport local
             done(null, user);
           } else {
             console.log('user not found in db');

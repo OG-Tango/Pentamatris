@@ -10,6 +10,7 @@ const sequelize = require('sequelize');
 
 
 router.get('/login', (req, res) => {
+  
 
 });
 
@@ -19,15 +20,16 @@ router.get('/register', (req, res) => {
 
 
 router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/' }),
+  passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
     
     const token = res.req.authInfo.token
     
     res.setHeader('Authorization', token);
     res.status(200).end();
-    console.log('success', 38); 
+    console.log('success', 29)
   });
+
 
 router.post('/register', async function(req, res){
   const { password , username , email } = req.body
