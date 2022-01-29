@@ -53,11 +53,11 @@ export  function Login(props){
         <form>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" className="email" value={state.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" className="email" defaultValue={state.email} onChange={handleChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" value={state.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" className="password" defaultValue={state.password} onChange={handleChange} placeholder="password"/>
           </div>
         </form>
       </div>
