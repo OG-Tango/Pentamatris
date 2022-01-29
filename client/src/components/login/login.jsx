@@ -27,7 +27,7 @@ export  function Login(props){
   function handleSubmit(){
     
       const { email, password } = state;
-      axios.post('/login', {
+      axios.post('/api/login', {
         password: password,
         email: email, 
         
