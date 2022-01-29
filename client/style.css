@@ -133,3 +133,8 @@ body {
   background-color: red;
   padding-bottom: 2px
 }
+
+/* Style for ticker */
+.ticker {
+  list-style: none;
+}

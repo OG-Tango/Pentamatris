@@ -128,7 +128,7 @@ const Pentamatris = () => {
   };
   
   const getFavorites = () => {
-    axios.get('/favorites')
+    axios.get('/api/favorites')
     .then((faves) => {
       // console.log(faves, 124);
       setFaves(faves.data);
