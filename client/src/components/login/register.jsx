@@ -25,7 +25,7 @@ export  function Register(props){
   function handleSubmit(){
   
     const { username, email, password } = state;
-    axios.post('/register', {
+    axios.post('/api/register', {
       password: password,
       email: email, 
       username: username

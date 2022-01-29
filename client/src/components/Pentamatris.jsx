@@ -118,35 +118,45 @@ const Pentamatris = (props) => {
     drop();
   }, dropTime)
 
+  //axios request functions
+
+  const getTopScores = () => {
+    axios.get('/api/leaders')
+    .then((top5) => {
+      settopScores(top5.data);
+    })
+    .catch(err => console.log('Problem getting Top scores', err));
+  };
+  
+  const getFavorites = () => {
+    axios.get('/api/favorites')
+    .then((faves) => {
+      // console.log(faves, 124);
+      setFaves(faves.data);
+    })
+    .catch(err => console.log('Problem getting Favorite Reviews', err));
+  }
+  
+  //toggle component functions
+
   const handleScoresClick = () => {
     setShowLeaders(!showLeaders);
+    setShowFaves(false);
+    setShowRevs(false);
   };
 
   const handleFavesClick = () => {
     setShowFaves(!showFaves);
+    setShowRevs(false);
+    setShowLeaders(false);
   };
 
   const handleRevsClick = () => {
     setShowRevs(!showRevs);
+    setShowLeaders(false);
+    setShowFaves(false);
   };
 
-  const getTopScores = () => {
-    axios.get('/api/leaders')
-      .then((top5) => {
-        settopScores(top5.data);
-      })
-      .catch(err => console.log('Problem getting Top scores', err));
-  };
-
-  const getFavorites = () => {
-    axios.get('/favorites')
-      .then((faves) => {
-        // console.log(faves, 124);
-        setFaves(faves.data);
-      })
-      .catch(err => console.log('Problem getting Favorite Reviews', err));
-  }
-  
   const showLeaderBoard = () => {
     handleScoresClick();
     getTopScores();
@@ -157,9 +167,26 @@ const Pentamatris = (props) => {
     // getFavorites();
   };
 
+  const closeLeaders = () => {
+    setShowLeaders(false);
+  };
+
+  const closeFaves = () => {
+    setShowFaves(false);
+  };
+
+  const closeReviews = () => {
+    setShowRevs(false);
+  };
+
+  const revsToFaves = () => {
+    setShowRevs(!showRevs);
+    setShowFaves(!showFaves);
+  };
+
 
   return (
-    
+
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
       <ReviewTicker />
       <StyledPentamatris>
@@ -167,23 +194,22 @@ const Pentamatris = (props) => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
-            { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
             <button 
-              className='go-to-all-revs'
+              className='go-to-revs'
               onClick={handleRevsClick}
             >SEE REVIEWS</button>
-            <button 
+            <button
               className='go-to-faves'
               onClick={showFavorites}
             >SEE FAVORITES</button>
-            { showRevs ? <Reviews /> : null }
-            { showFaves ? <Favorites faves={faves}/> : null }
           </div>
           )}
           <StyledStart callback={startGame} />
           <LogOut logOut={props}/>
+          { showLeaders ? <LeaderBoard topScores={topScores} close={closeLeaders}/> : null}
+          { showRevs ? <Reviews close={closeReviews} swap={revsToFaves}/> : null }
+          { showFaves ? <Favorites faves={faves} close={closeFaves} swap={revsToFaves}/> : null }
         </aside>
       </StyledPentamatris>
     </StyledPentamatrisWrapper>

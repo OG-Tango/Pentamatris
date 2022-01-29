@@ -3,11 +3,15 @@ import axios from 'axios';
 
 function LeaderBoard(props) {
   //render the top 5 high scores from all users in the db into each leader div
-  const { topScores } = props;
+  const { topScores, close } = props;
 
   return (
     <div id='leader-board'>
       <h4>LEADERBOARD</h4>
+      <button 
+        className='close'
+        onClick={close}
+      >x</button>
       <div className='all-leaders'>
         <div className='leader'>
           { topScores[0] ? `${topScores[0].username}   ${topScores[0].high_score}` : null }

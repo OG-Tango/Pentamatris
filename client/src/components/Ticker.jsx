@@ -1,11 +1,36 @@
 import Marquee from "react-fast-marquee";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
+const ReviewTicker = () => {
+  const [global, setGlobal] = useState([]);
 
-const ReviewTicker = () => (
-  <Marquee pauseOnHover="true" speed={50}>
-    Welcome to Pentamatris! Here you can see the favorite reviews from other users!
-  </Marquee>
-)
+  const getGlobalFaves = () => {
+    axios.get('api/global')
+      .then((faves) => {
+        // console.log(faves.data, 11)
+        setGlobal(faves.data);
+      })
+      .catch(err => console.log('Problem getting global faves', err));
+
+  };
+
+  useEffect(() => {
+    getGlobalFaves();
+  })
+
+  return (
+    <Marquee pauseOnHover="true" speed={50}>  
+      {global.map((fave) => {
+        return (
+          <div>{fave} &emsp; &emsp;</div>
+
+        )
+        })
+      }
+    </Marquee>
+  )
+  
+}
 
 export default ReviewTicker;
