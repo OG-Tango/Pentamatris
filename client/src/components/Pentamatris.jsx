@@ -13,11 +13,8 @@ import { StyledPentamatrisWrapper, StyledPentamatris } from "./styles/StyledPent
 import { useGameStatus } from "../hooks/useGameStatus.js";
 import ScoreBoard from './ScoreBoard.jsx';
 import LeaderBoard from './LeaderBoard.jsx';
-<<<<<<< HEAD
-=======
 import Reviews from './Reviews.jsx';
 import Favorites from "./Favorites.jsx";
->>>>>>> b65297d4e807fd5f0ef7d019be18568aab23b3d6
 import ReviewTicker from "./Ticker.jsx";
 
 
@@ -148,7 +145,7 @@ const Pentamatris = () => {
       })
       .catch(err => console.log('Problem getting Favorite Reviews', err));
   }
-  
+
   const showLeaderBoard = () => {
     handleScoresClick();
     getTopScores();
@@ -161,7 +158,7 @@ const Pentamatris = () => {
 
 
   return (
-    
+
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
       <ReviewTicker />
       <StyledPentamatris>
@@ -169,14 +166,13 @@ const Pentamatris = () => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            {/* <NextPiece /> */}
             <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
             { showLeaders ? <LeaderBoard topScores={topScores}/> : null}
-            <button 
+            <button
               className='go-to-all-revs'
               onClick={handleRevsClick}
             >SEE REVIEWS</button>
-            <button 
+            <button
               className='go-to-faves'
               onClick={showFavorites}
             >SEE FAVORITES</button>
