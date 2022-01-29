@@ -9,7 +9,7 @@ function ScoreBoard(props) {
 
   const getHighScore = () => {
 
-    axios.get('/score')
+    axios.get('/api/score')
       .then(res => {
         // console.log(res.data.high_score, 15);
         const score = res.data.high_score;
