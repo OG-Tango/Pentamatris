@@ -13,15 +13,13 @@ registerRouter.post('/', async function(req, res){
       email: email
     });
     console.log('success');
-    //  res.redirect('/');
+     res.redirect('/');
   } catch {
     console.error();
-    // res.redirect('/register');
+    res.redirect('/register');
   }
 });
 
-registerRouter.get('/', (req, res) => {
 
-});
 
 module.exports = registerRouter;
