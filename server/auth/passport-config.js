@@ -37,11 +37,7 @@ module.exports = passport => {
         const token = sendJWT(user)
           
       
-        passport.serializeUser(function(user, done) {
-           return done(null, user);
-          
-        });
-
+       
 
         
           return done(null, user, token );
@@ -75,9 +71,11 @@ module.exports = passport => {
           },
         }).then(user => {
           if (user) {
+
             console.log('user found in db in passport');
             done(null, user);
           } else {
+          
             console.log('user not found in db');
             done(null, false);
           }
