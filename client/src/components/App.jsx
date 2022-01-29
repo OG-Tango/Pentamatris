@@ -18,7 +18,7 @@ const App = () => {
     <div className="App">
         {!userLoggedIn && userActive && <Login user={userActive} loggedIn={userLoggedIn} onChange={handleChange} handleLogIn={handleLogIn}/>}
         {!userLoggedIn && !userActive && <Register user={userActive} loggedIn={userLoggedIn} onChange={handleChange}/>} 
-        {userLoggedIn && userActive && <Pentamatris user={userActive} loggedIn={userLoggedIn}/>} 
+        {userLoggedIn && userActive && <Pentamatris user={userActive} loggedIn={userLoggedIn} handleLogIn={handleLogIn}/>} 
     </div>
   )
   
