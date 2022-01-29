@@ -72,7 +72,7 @@ module.exports = passport => {
       try {
         Users.findOne({
           where: {
-            id: jwt_payload.id,
+            id: jwt_payload.sub,
           },
         }).then(user => {
           if (user) {

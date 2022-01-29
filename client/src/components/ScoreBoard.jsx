@@ -8,8 +8,8 @@ function ScoreBoard(props) {
   const [highScore, setHighScore] = useState(0);
 
   const getHighScore = () => {
-
-    axios.get('/api/score')
+    const token = localStorage.getItem('id_token');
+    axios.get('/api/score', {headers: token})
       .then(res => {
         // console.log(res.data.high_score, 15);
         const score = res.data.high_score;
@@ -21,9 +21,9 @@ function ScoreBoard(props) {
 
   };
 
-  // useEffect(() => {
-  //   getHighScore();
-  // })
+  useEffect(() => {
+    getHighScore();
+  })
     
   return (
     <div id='score-board'>

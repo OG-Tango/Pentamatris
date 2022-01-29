@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createStage } from "../helpers";
 import axios from "axios";
-import { reviewArray } from "../../../server/api/gottenReviews";
+import reviewArray from "../../../server/api/gottenReviews";
 
 export const useStage = (player, resetPlayer) => {
   const [stage, setStage] = useState(createStage());

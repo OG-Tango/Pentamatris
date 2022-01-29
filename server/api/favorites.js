@@ -1,14 +1,15 @@
 const express = require('express');
 const faveRouter = express.Router();
 const { Users, Favorites } = require('../models');
+const passport = require('passport');
 
-faveRouter.get('/', (req, res) => {
+faveRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findAll({
     include: { 
       model: Favorites,
     },
     where: { 
-      id: 'REPLACE WITH LOGGED IN USER ID'
+      id: 'REPLACE WITH USER ID'
     }
   })
   .then((data) => {
@@ -22,6 +23,19 @@ faveRouter.get('/', (req, res) => {
   })
   .catch(err => console.log('Failed get request to /favorites', err));
     
+})
+
+faveRouter.post('/', (req, res) => {
+  console.log(req.body);
+  Favorites.create({
+    text: req.body.text
+  })
+  .then(() => {
+    res.status(201).end();
+  })
+  .catch(() => {
+    res.status(404).end();
+  })
 })
 
 module.exports = faveRouter;

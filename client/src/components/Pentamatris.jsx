@@ -56,6 +56,15 @@ const Pentamatris = () => {
     setLevel(0);
   }
 
+  // const checkHighScore = () => {
+  //   if(gameOver === true) {
+  //     if(score > CURRENT HIGH SCORE FOR USER ) {
+  //   REPLACE HIGH SCORE IN DATABASE WITH NEW HIGH SCORE
+  //  axios.put('/api/score', (req, res))
+  // }
+  //   }
+  // }
+
   //drop function
   const drop = () => {
     //set game speed dependent on level
@@ -74,6 +83,7 @@ const Pentamatris = () => {
       if(player.pos.y < 1) {
         console.log("GameOver");
         setGameOver(true);
+        //checkHighScore();
         setDropTime(null);
       }
       //set collided to true when piece eventually collides with bottom or other piece
@@ -163,7 +173,7 @@ const Pentamatris = () => {
 
   const showFavorites = () => {
     handleFavesClick();
-    // getFavorites();
+    getFavorites();
   };
 
   const closeLeaders = () => {

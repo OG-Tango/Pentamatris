@@ -3,12 +3,13 @@ const express = require("express");
 const externalRouter = express.Router();
 const axios = require('axios');
 const { X_RAPIDAPI_KEY } = process.env;
+const passport = require('passport');
 
 const generateIndex = () => {
   return Math.floor(Math.random() * asinArr.length);
 };
 
-externalRouter.get("/product/:stars", (req, res) => {
+externalRouter.get("/product/:stars", passport.authenticate('jwt', {session: false}), (req, res) => {
   //console.log(X_RAPIDAPI_KEY, "HERE");
   const options = {
     method: "GET",

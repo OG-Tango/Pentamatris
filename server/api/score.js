@@ -1,12 +1,14 @@
 const express = require('express');
 const scoreRouter = express.Router();
 const { Users } = require('../models');
+const passport = require('passport');
 
-scoreRouter.get('/', (req, res) => {
+scoreRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+  console.log(req.headers);
   Users.findAll({
     attributes: ['high_score'],
     where: {
-      id: 'REPLACE WITH LOGGED IN USER ID'
+      id: '1'
     }
   })
   .then((score) => {
@@ -18,5 +20,9 @@ scoreRouter.get('/', (req, res) => {
   .catch(err => console.log('Failed get request to /score', err));
 
 });
+
+// scoreRouter.put('/', (req, res) => {
+//   Users.
+// })
 
 module.exports = scoreRouter;

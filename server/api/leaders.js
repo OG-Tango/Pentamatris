@@ -1,8 +1,9 @@
 const express = require('express');
 const leadersRouter = express.Router();
 const { Users } = require('../models');
+const passport = require('passport');
 
-leadersRouter.get('/', (req, res) => {
+leadersRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findAll({
     attributes: ['username', 'high_score']
   })

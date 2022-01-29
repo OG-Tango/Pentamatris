@@ -1,8 +1,9 @@
 const express = require('express');
 const globalRouter = express.Router();
 const { Favorites } = require('../models');
+const passport = require('passport');
 
-globalRouter.get('/', (req, res) => {
+globalRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Favorites.findAll({
     attributes: ['text']
   })
