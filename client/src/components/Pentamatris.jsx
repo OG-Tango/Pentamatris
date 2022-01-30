@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { createStage, checkCollision } from "../helpers.js";
 import { usePlayer } from "../hooks/usePlayer.js";
@@ -39,6 +39,7 @@ const Pentamatris = (props) => {
   const [showRevs, setShowRevs] = useState(false);
   const [topScores, settopScores] = useState([]);
   const [faves, setFaves] = useState([]);
+  const [highScore, setHighScore] = useState(0);
 
   //function that checks if the player can move by checking collision with walls and other pieces
   const movePlayer = dir => {
@@ -56,6 +57,24 @@ const Pentamatris = (props) => {
     setScore(0);
     setLevel(0);
   }
+
+  const checkHighScore = () => {
+    if(gameOver === true) {
+      if(score > highScore ) {
+        let token = localStorage.getItem('id_token');
+        axios.put('/api/score', {high_score: score}, {headers: {'authorization': token}})
+        .then((score) => {
+          console.log(score);
+          setHighScore(score);
+        })
+        .catch(error => {
+          console.error(error);
+        })
+      }
+    }
+  }
+
+  
 
   //drop function
   const drop = () => {
@@ -75,6 +94,7 @@ const Pentamatris = (props) => {
       if(player.pos.y < 1) {
         console.log("GameOver");
         setGameOver(true);
+        //checkHighScore();
         setDropTime(null);
       }
       //set collided to true when piece eventually collides with bottom or other piece
@@ -119,9 +139,30 @@ const Pentamatris = (props) => {
   }, dropTime)
 
   //axios request functions
+  let token = localStorage.getItem('id_token');
+
+  const getHighScore = () => {
+    axios.get('/api/score', {headers: {'authorization': token}})
+      .then(res => {
+        // console.log(res.data.high_score, 15);
+        let databaseScore = res.data.high_score;
+        if(databaseScore === null) {
+          databaseScore = 0;
+        }
+        setHighScore(databaseScore);
+      })
+      .catch(err => {
+        console.log('Problem getting score', err);
+      });
+
+  };
+
+  useEffect(() => {
+    getHighScore();
+  })
 
   const getTopScores = () => {
-    axios.get('/api/leaders')
+    axios.get('/api/leaders', {headers: {'authorization': token}} )
     .then((top5) => {
       settopScores(top5.data);
     })
@@ -129,10 +170,11 @@ const Pentamatris = (props) => {
   };
   
   const getFavorites = () => {
-    axios.get('/api/favorites')
+    axios.get('/api/favorites', {headers: {'authorization': token}} )
     .then((faves) => {
-      // console.log(faves, 124);
+      
       setFaves(faves.data);
+      console.log(faves, 124);
     })
     .catch(err => console.log('Problem getting Favorite Reviews', err));
   }
@@ -164,7 +206,7 @@ const Pentamatris = (props) => {
 
   const showFavorites = () => {
     handleFavesClick();
-    // getFavorites();
+    getFavorites();
   };
 
   const closeLeaders = () => {
@@ -194,7 +236,7 @@ const Pentamatris = (props) => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
+            <ScoreBoard onClick={showLeaderBoard} highScore={highScore} score={score}/>
             <button 
               className='go-to-revs'
               onClick={handleRevsClick}

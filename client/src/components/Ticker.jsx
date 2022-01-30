@@ -6,24 +6,29 @@ const ReviewTicker = () => {
   const [global, setGlobal] = useState([]);
 
   const getGlobalFaves = () => {
-    axios.get('api/global')
-      .then((faves) => {
-        // console.log(faves.data, 11)
-        setGlobal(faves.data);
-      })
-      .catch(err => console.log('Problem getting global faves', err));
-
+    let token = localStorage.getItem('id_token');
+    axios.get('/api/global', {headers: {'authorization': token}})
+    .then((faves) => {
+      
+      setGlobal(faves.data);
+    })
+    .catch(err => {
+      return console.log('Problem getting global faves', err);
+      
+    }
+    );
+    
   };
-
+  
   useEffect(() => {
-    getGlobalFaves();
-  })
+    getGlobalFaves()
+  });
 
   return (
-    <Marquee pauseOnHover="true" speed={50}>  
-      {global.map((fave) => {
+    <Marquee className="ticker" pauseOnHover="true" speed={50}> 
+    {global.map((fave, i) => {
         return (
-          <div>{fave} &emsp; &emsp;</div>
+          <div key={i}>{fave} &emsp; &emsp;</div>
 
         )
         })

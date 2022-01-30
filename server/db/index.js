@@ -3,8 +3,9 @@ const { Sequelize } = require('sequelize');
 
 const db = new Sequelize('pentamatris', 'root', '', {
   host: '127.0.0.1',
-  dialect:'mysql'
-});
+  dialect:'mysql',
+  logging: false,
+  });
 
 // const db = new Sequelize('pentamatris', 'root', '');
 

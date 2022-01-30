@@ -10,24 +10,19 @@ export  function Register(props){
 
   function handleUserChange(evt) {
     const value = evt.target.value;
-     setUsername({
-     username: evt.target.value
-    });
-  }
-
-  function handlePasswordChange(evt) {
-    const value = evt.target.value;
-     setPassword({
-     password: evt.target.value
-    });
-  }
+     setUsername({username: evt.target.value});
+    };
 
   function handleEmailChange(evt) {
     const value = evt.target.value;
-    setEmail({
-    email: evt.target.value
-   });
-  }
+      setEmail({email: evt.target.value});
+    };
+    
+  function handlePasswordChange(evt) {
+      const value = evt.target.value;
+        setPassword({password: evt.target.value});
+      };
+
 
   function handleClick(event) {
     props.onChange(!(event.target.value))
