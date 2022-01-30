@@ -16,7 +16,7 @@ registerRouter.post('/', async function(req, res){
      res.redirect('/');
   } catch {
     console.error();
-    res.redirect('/register');
+    res.redirect('/');
   }
 });
 

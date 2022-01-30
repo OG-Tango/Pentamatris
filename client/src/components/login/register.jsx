@@ -4,17 +4,29 @@ import axios from 'axios';
 
 export  function Register(props){
 
-  const [state, setState] = useState({
-      username: "",
-      email: "",
-      password: "",
-  })
-  function handleChange(evt) {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleUserChange(evt) {
     const value = evt.target.value;
-     setState({
-      ...state,
-      [evt.target.classList.value]: value
+     setUsername({
+     username: evt.target.value
     });
+  }
+
+  function handlePasswordChange(evt) {
+    const value = evt.target.value;
+     setPassword({
+     password: evt.target.value
+    });
+  }
+
+  function handleEmailChange(evt) {
+    const value = evt.target.value;
+    setEmail({
+    email: evt.target.value
+   });
   }
 
   function handleClick(event) {
@@ -24,11 +36,11 @@ export  function Register(props){
 
   function handleSubmit(){
   
-    const { username, email, password } = state;
+    // const { username, email, password } = state;
     axios.post('/api/register', {
-      password: password,
-      email: email, 
-      username: username
+      ...password,
+      ...email, 
+      ...username
       
     })
      .then(res => {
@@ -49,15 +61,15 @@ export  function Register(props){
         <form>
           <div className="form-group">
             <label htmlFor="username">Username</label>
-            <input type="text" className="username" defaultValue={state.username} onChange={handleChange} placeholder="username"/>
+            <input type="text" className="username" defaultValue={username} onChange={handleUserChange} placeholder="username"/>
           </div>
           <div className="form-group">
             <label htmlFor="email">E-mail</label>
-            <input type="email" className="email" defaultValue={state.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" className="email" defaultValue={email} onChange={handleEmailChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" defaultValue={state.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" className="password" defaultValue={password} onChange={handlePasswordChange} placeholder="password"/>
           </div>
         </form>
       </div>
