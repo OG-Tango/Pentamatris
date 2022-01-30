@@ -6,12 +6,17 @@ const ReviewTicker = () => {
   const [global, setGlobal] = useState([]);
 
   const getGlobalFaves = () => {
-    axios.get('api/global')
+    let token = localStorage.getItem('id_token');
+    axios.get('api/global', {headers: {'authorization': token}})
       .then((faves) => {
         // console.log(faves.data, 11)
         setGlobal(faves.data);
       })
-      .catch(err => console.log('Problem getting global faves', err));
+      .catch(err => {
+        // return console.log('Problem getting global faves', err
+
+        }
+      );
 
   };
 

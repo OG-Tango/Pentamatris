@@ -25,6 +25,7 @@ module.exports = passport => {
     } 
   
     if(user === null){
+      console.log(user, "user")
       return done('Cannot find user')
     }
     try {
@@ -35,6 +36,7 @@ module.exports = passport => {
         return done(null, false)
       }
     } catch (err) {
+      console.log(err);
       return done(err);
     }
     }
@@ -47,6 +49,7 @@ module.exports = passport => {
   passport.use(
     'jwt',
     new JWTStrategy(opts, (jwt_payload, done) => {
+      console.log(opts, "50");
       try {
         Users.findOne({
           where: {

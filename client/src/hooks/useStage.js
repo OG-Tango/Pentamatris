@@ -23,10 +23,11 @@ export const useStage = (player, resetPlayer) => {
         if(row.findIndex(cell => cell[0] === 0) === -1){
           starRating+=1;
           accumulator.unshift(new Array(newStage[0].length).fill([0, 'clear']));
-            axios.get(`api/external/product/${starRating}`)
+          let token = localStorage.getItem('id_token');
+            axios.get(`api/external/product/${starRating}`, {headers: {'authorization': token}})
             .then(review => {
               //review.rating and review.review
-              //console.log('REVIEW SENT BACK', review);
+              console.log('REVIEW SENT BACK', review);
               reviewArray.push(review.data.review);
 
             })

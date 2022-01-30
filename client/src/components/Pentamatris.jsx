@@ -129,9 +129,10 @@ const Pentamatris = (props) => {
   }, dropTime)
 
   //axios request functions
+  let token = localStorage.getItem('id_token');
 
   const getTopScores = () => {
-    axios.get('/api/leaders')
+    axios.get('/api/leaders', {headers: {'authorization': token}} )
     .then((top5) => {
       settopScores(top5.data);
     })
@@ -139,7 +140,7 @@ const Pentamatris = (props) => {
   };
   
   const getFavorites = () => {
-    axios.get('/api/favorites')
+    axios.get('/api/favorites', {headers: {'authorization': token}} )
     .then((faves) => {
       // console.log(faves, 124);
       setFaves(faves.data);
@@ -198,7 +199,7 @@ const Pentamatris = (props) => {
   return (
 
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
-      <ReviewTicker />
+      {/* <ReviewTicker /> */}
       <StyledPentamatris>
         <Stage stage={stage} />
         <aside>

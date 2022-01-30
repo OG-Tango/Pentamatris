@@ -7,7 +7,8 @@ function Reviews(props) {
   const { close, swap } = props;
 
   const addToFavorites = (text) => {
-    axios.post('/api/favorites', {text})
+    let token = localStorage.getItem('id_token');
+    axios.post('/api/favorites', {text}, {headers: {'authorization': token}})
       .then(() => {
         console.log('SUCCESSFULLY ADDED FAVE!')
       })
@@ -23,8 +24,8 @@ function Reviews(props) {
       >x</button>
       <ul className="review">
         {
-        reviewArray.map(review => {
-          return <li onClick={() => addToFavorites(review)}>{review}</li>
+        reviewArray.map((review, i) => {
+          return <li key={i} onClick={() => addToFavorites(review)}>{review}</li>
           })
         }
       </ul>

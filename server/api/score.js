@@ -7,9 +7,6 @@ scoreRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) 
   console.log(req.headers);
   Users.findAll({
     attributes: ['high_score'],
-    where: {
-      id: 'INSERT USER ID'
-    }
   })
   .then((score) => {
     // console.log(score[0].dataValues, 12);

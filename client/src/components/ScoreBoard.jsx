@@ -9,7 +9,7 @@ function ScoreBoard(props) {
 
   const getHighScore = () => {
     const token = localStorage.getItem('id_token');
-    axios.get('/api/score', {headers: token})
+    axios.get('/api/score', {headers: {'authorization': token}})
       .then(res => {
         // console.log(res.data.high_score, 15);
         const databaseScore = res.data.high_score;

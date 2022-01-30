@@ -24,7 +24,7 @@ faveRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) =
 })
 
 faveRouter.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "27");
   Favorites.create({
     text: req.body.text
   })
