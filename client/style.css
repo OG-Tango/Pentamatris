@@ -141,7 +141,8 @@ body {
 
 /* Style for ticker */
 .ticker {
-  list-style: none;
+  
+  color: rgb(255, 255, 255);
 }
 
 .review {

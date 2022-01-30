@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { createStage, checkCollision } from "../helpers.js";
 import { usePlayer } from "../hooks/usePlayer.js";
@@ -39,6 +39,7 @@ const Pentamatris = (props) => {
   const [showRevs, setShowRevs] = useState(false);
   const [topScores, settopScores] = useState([]);
   const [faves, setFaves] = useState([]);
+  const [highScore, setHighScore] = useState(0);
 
   //function that checks if the player can move by checking collision with walls and other pieces
   const movePlayer = dir => {
@@ -57,14 +58,23 @@ const Pentamatris = (props) => {
     setLevel(0);
   }
 
-  // const checkHighScore = () => {
-  //   if(gameOver === true) {
-  //     if(score > CURRENT HIGH SCORE FOR USER ) {
-  //   REPLACE HIGH SCORE IN DATABASE WITH NEW HIGH SCORE
-  //  axios.put('/api/score', (req, res))
-  // }
-  //   }
-  // }
+  const checkHighScore = () => {
+    if(gameOver === true) {
+      if(score > highScore ) {
+        let token = localStorage.getItem('id_token');
+        axios.put('/api/score', {high_score: score}, {headers: {'authorization': token}})
+        .then((score) => {
+          console.log(score);
+          setHighScore(score);
+        })
+        .catch(error => {
+          console.error(error);
+        })
+      }
+    }
+  }
+
+  
 
   //drop function
   const drop = () => {
@@ -130,6 +140,26 @@ const Pentamatris = (props) => {
 
   //axios request functions
   let token = localStorage.getItem('id_token');
+
+  const getHighScore = () => {
+    axios.get('/api/score', {headers: {'authorization': token}})
+      .then(res => {
+        // console.log(res.data.high_score, 15);
+        let databaseScore = res.data.high_score;
+        if(databaseScore === null) {
+          databaseScore = 0;
+        }
+        setHighScore(databaseScore);
+      })
+      .catch(err => {
+        console.log('Problem getting score', err);
+      });
+
+  };
+
+  useEffect(() => {
+    getHighScore();
+  })
 
   const getTopScores = () => {
     axios.get('/api/leaders', {headers: {'authorization': token}} )
@@ -200,13 +230,13 @@ const Pentamatris = (props) => {
   return (
 
     <StyledPentamatrisWrapper role="button" tabIndex="0" onKeyDown={event => move(event)} onKeyUp={keyUp}>
-      {/* <ReviewTicker /> */}
+      <ReviewTicker />
       <StyledPentamatris>
         <Stage stage={stage} />
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            <ScoreBoard onClick={showLeaderBoard} score={score}/>
+            <ScoreBoard onClick={showLeaderBoard} highScore={highScore} score={score}/>
             <button 
               className='go-to-revs'
               onClick={handleRevsClick}

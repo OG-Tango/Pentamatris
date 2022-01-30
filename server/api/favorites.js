@@ -12,7 +12,7 @@ faveRouter.get('/', (req, res) => {
     
   })
   .then((data) => {
-    console.log(data, 51);
+    // console.log(data, 51);
     
     const userData = data[0].dataValues.Favorites
     const userFaves = userData.map(fave => fave.dataValues.text);
@@ -31,7 +31,7 @@ faveRouter.post('/', passport.authenticate('jwt', {session: false}), (req, res) 
     text: req.body.text
   })
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     const FavoriteId = data.dataValues.id;
     User_Faves.create({
     UserId,

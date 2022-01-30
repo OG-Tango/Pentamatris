@@ -17,8 +17,18 @@ scoreRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) 
 
 });
 
-// scoreRouter.put('/', (req, res) => {
-//   Users.
-// })
+scoreRouter.put('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+  let { high_score } = req.body;
+  let { id } = req.user.dataValues;
+  Users.update({
+    high_score,
+  }, {where: {id}})
+  .then((data) => {
+    res.status(200).send(data[0]);
+  })
+  .catch(error => {
+    console.error(error);
+  })
+})
 
 module.exports = scoreRouter;
