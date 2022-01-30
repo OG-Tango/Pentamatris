@@ -142,8 +142,9 @@ const Pentamatris = (props) => {
   const getFavorites = () => {
     axios.get('/api/favorites', {headers: {'authorization': token}} )
     .then((faves) => {
-      // console.log(faves, 124);
+      
       setFaves(faves.data);
+      console.log(faves, 124);
     })
     .catch(err => console.log('Problem getting Favorite Reviews', err));
   }

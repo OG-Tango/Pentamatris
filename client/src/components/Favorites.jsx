@@ -6,7 +6,7 @@ function Favorites(props) {
   return (
     <div id='faves-view'>
       <h4>Favorite Reviews</h4>
-      { faves.map((fave, i) => <div key={i}>{fave}</div>) }
+      { faves.map((fave, i) => <div key={i}>{`${fave} \n \n`}<br /><br /></div>) }
       <button 
         className="close"
         onClick={close}

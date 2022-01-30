@@ -4,7 +4,6 @@ const { Users } = require('../models');
 const passport = require('passport');
 
 scoreRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
-  console.log(req.headers);
   Users.findAll({
     attributes: ['high_score'],
   })

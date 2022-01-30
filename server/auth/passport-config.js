@@ -49,7 +49,6 @@ module.exports = passport => {
   passport.use(
     'jwt',
     new JWTStrategy(opts, (jwt_payload, done) => {
-      console.log(opts, "50");
       try {
         Users.findOne({
           where: {
@@ -58,7 +57,7 @@ module.exports = passport => {
         }).then(user => {
           if (user) {
 
-            console.log('user found in db in passport');
+            // console.log('user found in db in passport');
             done(null, user);
           } else {
           
