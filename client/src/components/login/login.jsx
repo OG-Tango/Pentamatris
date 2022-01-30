@@ -6,18 +6,18 @@ import axios from 'axios';
 
 export  function Login(props){
 
-  const [state, setState] = useState({
-    password: "",
-    email: "",
-  })
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function handleChange(evt) {
-  const value = evt.target.value;
-   setState({
-    ...state,
-    [evt.target.classList.value]: value
-  });
-  }
+  function handleEmailChange(evt) {
+    const value = evt.target.value;
+      setEmail({email: evt.target.value});
+    };
+    
+  function handlePasswordChange(evt) {
+      const value = evt.target.value;
+        setPassword({password: evt.target.value});
+      };
 
   function handleClick(event) {
     props.onChange(event.target.value)
@@ -26,10 +26,10 @@ export  function Login(props){
 
   function handleSubmit(){
     
-      const { email, password } = state;
+      // const { email, password } = state;
       axios.post('/api/login', {
-        password: password,
-        email: email, 
+        ...password,
+        ...email, 
         
       })
        .then(res => {
@@ -53,11 +53,11 @@ export  function Login(props){
         <form>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" className="email" defaultValue={state.email} onChange={handleChange} placeholder="email"/>
+            <input type="email" className="email" defaultValue={email} onChange={handleEmailChange} placeholder="email"/>
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" className="password" defaultValue={state.password} onChange={handleChange} placeholder="password"/>
+            <input type="password" className="password" defaultValue={password} onChange={handlePasswordChange} placeholder="password"/>
           </div>
         </form>
       </div>

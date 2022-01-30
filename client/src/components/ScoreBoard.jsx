@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function ScoreBoard(props) {
 
-  const { onClick, gameScore } = props;
+  const { onClick, score } = props;
   const [highScore, setHighScore] = useState(0);
 
   const getHighScore = () => {
@@ -12,8 +12,8 @@ function ScoreBoard(props) {
     axios.get('/api/score', {headers: token})
       .then(res => {
         // console.log(res.data.high_score, 15);
-        const score = res.data.high_score;
-        setHighScore(score);
+        const databaseScore = res.data.high_score;
+        setHighScore(databaseScore);
       })
       .catch(err => {
         console.log('Problem getting score', err);
@@ -30,7 +30,7 @@ function ScoreBoard(props) {
       <h6>HIGH SCORE</h6>
       <div className='high-sc'>{highScore}</div>
       <h6>CURRENT SCORE</h6>
-      <div className='game-sc'>{gameScore}</div>
+      <div className='game-sc'>{score}</div>
       <button 
         className='go-to-lb' 
         onClick={onClick}

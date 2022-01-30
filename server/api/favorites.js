@@ -8,9 +8,7 @@ faveRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) =
     include: { 
       model: Favorites,
     },
-    where: { 
-      id: 'REPLACE WITH USER ID'
-    }
+    
   })
   .then((data) => {
     // console.log(data, 51);
@@ -18,14 +16,14 @@ faveRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) =
     const userData = data[0].dataValues.Favorites
     const userFaves = userData.map(fave => fave.dataValues.text);
 
-    console.log(userFaves, 56)
+    //console.log(userFaves, 56)
     res.status(200).send(userFaves);
   })
   .catch(err => console.log('Failed get request to /favorites', err));
     
 })
 
-faveRouter.post('/', (req, res) => {
+faveRouter.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   console.log(req.body);
   Favorites.create({
     text: req.body.text

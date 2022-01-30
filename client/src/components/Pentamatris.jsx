@@ -204,7 +204,7 @@ const Pentamatris = (props) => {
         <aside>
           {gameOver ? (<Display gameOver={gameOver} text="gameOver" />) : (
             <div>
-            <ScoreBoard onClick={showLeaderBoard} gameScore={score}/>
+            <ScoreBoard onClick={showLeaderBoard} score={score}/>
             <button 
               className='go-to-revs'
               onClick={handleRevsClick}

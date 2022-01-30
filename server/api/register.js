@@ -4,6 +4,7 @@ const { Users } = require('../models');
 const bcrypt = require('bcrypt');
 
 registerRouter.post('/', async function(req, res){
+  console.log(req.body.password, "LINE 7");
   const { password , username , email } = req.body
   try {
     const hashedP = await bcrypt.hash(password, 10);
@@ -16,7 +17,7 @@ registerRouter.post('/', async function(req, res){
      res.redirect('/');
   } catch {
     console.error();
-    res.redirect('/register');
+    res.redirect('/');
   }
 });
 
