@@ -1,13 +1,11 @@
 const express = require('express');
 const scoreRouter = express.Router();
 const { Users } = require('../models');
+const passport = require('passport');
 
-scoreRouter.get('/', (req, res) => {
+scoreRouter.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findAll({
     attributes: ['high_score'],
-    where: {
-      id: 'REPLACE WITH LOGGED IN USER ID'
-    }
   })
   .then((score) => {
     // console.log(score[0].dataValues, 12);
@@ -18,5 +16,19 @@ scoreRouter.get('/', (req, res) => {
   .catch(err => console.log('Failed get request to /score', err));
 
 });
+
+scoreRouter.put('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+  let { high_score } = req.body;
+  let { id } = req.user.dataValues;
+  Users.update({
+    high_score,
+  }, {where: {id}})
+  .then((data) => {
+    res.status(200).send(data[0]);
+  })
+  .catch(error => {
+    console.error(error);
+  })
+})
 
 module.exports = scoreRouter;

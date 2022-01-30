@@ -5,8 +5,7 @@ const passport = require('passport');
 loginRouter.post('/', 
   passport.authenticate('local', { session: false }),
   function(req, res) {
-    
-    const token = res.req.authInfo.token
+    const token = req.authInfo.token;
     
     res.setHeader('Authorization', token);
     res.status(200).end();

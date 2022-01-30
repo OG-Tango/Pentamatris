@@ -25,6 +25,7 @@ module.exports = passport => {
     } 
   
     if(user === null){
+      console.log(user, "user")
       return done('Cannot find user')
     }
     try {
@@ -35,6 +36,7 @@ module.exports = passport => {
         return done(null, false)
       }
     } catch (err) {
+      console.log(err);
       return done(err);
     }
     }
@@ -55,7 +57,7 @@ module.exports = passport => {
         }).then(user => {
           if (user) {
 
-            console.log('user found in db in passport');
+            // console.log('user found in db in passport');
             done(null, user);
           } else {
           
