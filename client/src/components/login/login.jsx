@@ -36,7 +36,6 @@ export  function Login(props){
         
       })
        .then(res => {
-        console.log('id_token', res.headers.authorization);
         localStorage.setItem('id_token', res.headers.authorization);
         if(res.headers.authorization !== undefined){
           props.handleLogIn(true)
