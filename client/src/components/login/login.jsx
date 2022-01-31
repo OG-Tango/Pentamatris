@@ -9,15 +9,19 @@ export  function Login(props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  function handlePasswordChange(evt) {
+    const value = evt.target.value;
+     setPassword({
+     password: evt.target.value
+    });
+  }
+
   function handleEmailChange(evt) {
     const value = evt.target.value;
-      setEmail({email: evt.target.value});
-    };
-    
-  function handlePasswordChange(evt) {
-      const value = evt.target.value;
-        setPassword({password: evt.target.value});
-      };
+    setEmail({
+    email: evt.target.value
+   });
+  }
 
   function handleClick(event) {
     props.onChange(event.target.value)
@@ -26,7 +30,6 @@ export  function Login(props){
 
   function handleSubmit(){
     
-      // const { email, password } = state;
       axios.post('/api/login', {
         ...password,
         ...email, 

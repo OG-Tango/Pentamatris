@@ -7,7 +7,7 @@ function LeaderBoard(props) {
 
   return (
     <div id='leader-board'>
-      <h4>LEADERBOARD</h4>
+      <h4 className='view-title'>LEADERBOARD</h4>
       <button 
         className='close'
         onClick={close}

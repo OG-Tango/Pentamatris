@@ -14,11 +14,11 @@
 //   cursor: pointer;
 // `
 
-import { Button } from "@material-ui/core"
+// import { Button } from "@material-ui/core"
 import React from "react";
 
 export const StyledStart = ({ callback }) => {
   return(
-    <Button variant="contained" onClick={callback} >Start Pentamatris!</Button>
+    <button className='start' onClick={callback} >Start Pentamatris!</button>
   )
 }

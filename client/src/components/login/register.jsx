@@ -22,8 +22,7 @@ export  function Register(props){
       const value = evt.target.value;
         setPassword({password: evt.target.value});
       };
-  
-  
+
 
   function handleClick(event) {
     props.onChange(!(event.target.value))
@@ -70,7 +69,7 @@ export  function Register(props){
         </form>
       </div>
       <div className="footer" >
-        <button type='submit 'className="btn" onClick={handleSubmit} action="/register" method = 'POST' >
+        <button type='submit 'className="btn" onClick={handleSubmit} action="/api/register" method = 'POST' >
           Register
         </button>
       </div>

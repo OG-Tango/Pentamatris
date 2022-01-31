@@ -8,9 +8,9 @@ function ScoreBoard(props) {
 
   return (
     <div id='score-board'>
-      <h6>HIGH SCORE</h6>
+      <h5 className='sc-title'>HIGH SCORE</h5>
       <div className='high-sc'>{highScore}</div>
-      <h6>CURRENT SCORE</h6>
+      <h5 className='sc-title'>CURRENT SCORE</h5>
       <div className='game-sc'>{score}</div>
       <button 
         className='go-to-lb' 

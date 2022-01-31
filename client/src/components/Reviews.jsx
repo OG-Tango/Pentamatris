@@ -15,17 +15,23 @@ function Reviews(props) {
       .catch(error => console.error(error))
   }
 
+  
+  const handleScroll = e => {
+    const element = e.target;
+    console.log(element.scrollHeight, 21)
+  }
+
   return (
     <div id='revs-view'>
-      <h4>Your Reviews</h4>
+      <h4 className='view-title'>YOUR REVIEWS</h4>
       <button 
         className="close"
         onClick={close}
       >x</button>
-      <ul className="review">
+      <ul className="rev-list" onScroll={handleScroll}>
         {
         reviewArray.map((review, i) => {
-          return <li key={i} onClick={() => addToFavorites(review)}>{review}</li>
+          return <li className="text" key={i} onClick={() => addToFavorites(review)}>{`${review} \n \n`}<br /><br /></li>
           })
         }
       </ul>
