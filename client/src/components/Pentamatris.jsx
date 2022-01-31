@@ -64,7 +64,7 @@ const Pentamatris = (props) => {
         let token = localStorage.getItem('id_token');
         axios.put('/api/score', {high_score: score}, {headers: {'authorization': token}})
         .then((score) => {
-          console.log(score);
+          console.log(score, 67);
           setHighScore(score);
         })
         .catch(error => {
@@ -94,7 +94,7 @@ const Pentamatris = (props) => {
       if(player.pos.y < 1) {
         console.log("GameOver");
         setGameOver(true);
-        //checkHighScore();
+        checkHighScore();
         setDropTime(null);
       }
       //set collided to true when piece eventually collides with bottom or other piece

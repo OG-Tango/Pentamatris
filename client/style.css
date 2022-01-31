@@ -12,63 +12,75 @@ body {
 /* Styles for score-board and leader-board */
 
 #score-board {
-  background-color:cornsilk;
+  background-color: rgb(250, 173, 57);
   border-style: solid;
-  border-radius: 25px;
+  border-color: black;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
-  width: 200px;
+  width: 196px;
   margin-left: auto;
   margin-right: 0;
   margin-bottom: 5px
 }
 
 #leader-board {
-  background-color:cornsilk;
+  background-color: rgb(250, 173, 57);
   border-style: solid;
-  border-radius: 25px;
+  border-color: black;
   width: 250px;
   height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  right: 265px;
+  right: 306px;
   bottom: 305px
 }
 
 .go-to-lb {
-  background-color:lightcoral;
+  font-family: 'Russo One', sans-serif;
+  background-color: rgb(1, 44, 255);
+  border-color: black;
   width: 125px;
-  border-radius: 50px;
-  margin-left: 26px
+  margin-left: 35px;
 }
 
 .high-sc {
+  background-color: black;
+  border-color: black;
+  color: white;
   border-style: solid;
-  border-radius: 25px;
   height: 25px;
   padding-left: 5px;
   padding-top: 2px;
 }
 
 .game-sc {
+  background-color: black;
+  border-color: black;
+  color: white;
   border-style: solid;
-  border-radius: 25px;
   height: 25px;
   margin-bottom: 5px;
   padding-left: 5px;
   padding-top: 2px;
 }
 
+.sc-title {
+  font-family: 'Russo One', sans-serif;
+  margin-bottom: 5px;
+}
+
 .all-leaders {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
 }
 
 .leader {
+  font-family: 'Montserrat', sans-serif;
   border-bottom: solid;
   height: 15px;
   width: 175px;
@@ -80,71 +92,103 @@ body {
 /* Styles for Reviews and Favorites */
 
 #revs-view {
-  background-color:cornsilk;
+  background-color:rgb(248, 255, 1);
   border-style: solid;
-  border-radius: 25px;
-  width: 250px;
+  border-color: black;
+  width: 240px;
   height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  right: 265px;
-  bottom: 305px
+  right: 306px;
+  bottom: 305px;
+  padding-right: 10px;
 }
 
 #faves-view {
-  background-color:cornsilk;
+  background-color:rgb(248, 255, 1);
   border-style: solid;
-  border-radius: 25px;
-  width: 250px;
+  border-color: black;
+  width: 240px;
   height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  right: 265px;
+  right: 306px;
   bottom: 305px;
-  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.view-title {
+  font-family: 'Russo One', sans-serif;
+  margin-bottom: 0px;
 }
 
 .go-to-revs {
-  background-color:lightcoral;
-  width: 225px;
-  border-radius: 25px;
+  font-family: 'Russo One', sans-serif;
+  background-color:rgb(171, 1, 255);
+  border-color: black;
+  width: 220px;
   margin-top: 5px
 }
 
 .go-to-faves {
-  background-color:lightcoral;
-  width: 225px;
-  border-radius: 25px;
+  font-family: 'Russo One', sans-serif;
+  background-color: rgb(0, 241, 239);
+  border-color: black;
+  width: 220px;
   margin-top: 5px;
   margin-bottom: 5px
 }
 
 .revs-faves {
-  background-color: lightcoral;
-  border-radius: 25px;
+  font-family: 'Russo One', sans-serif;
+  background-color: rgb(248, 1, 255);
+  border-color: black;
   margin-top: auto;
   margin-bottom: 5px
 }
 
+.rev-list {
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.text {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .close {
   position: absolute;
+  border-color: black;
   top: 7px;
   right: 10px;
   border-radius: 50%;
-  background-color: red;
+  background-color: rgb(255, 1, 1);
   padding-bottom: 2px
 }
 
 /* Style for ticker */
 .ticker {
-  
-  color: rgb(255, 255, 255);
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(0, 255, 222);
 }
 
-.review {
-  list-style: none;
+/* Style of start button */
+
+.start {
+  font-family: Pixel;
+  font-size: larger;
+  background-color: rgb(1, 236, 25);
+  border-color: black;
+  width: 220px;
+  padding: 10px 0px 10px 0px;
+}
+
+.logout {
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgb(255, 1, 1);
+  border-color: black;
 }

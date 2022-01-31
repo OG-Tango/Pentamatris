@@ -11,7 +11,10 @@ const Users = db.define('Users', {
   username: Sequelize.STRING,
   email: Sequelize.STRING,
   password: Sequelize.STRING,
-  high_score: Sequelize.INTEGER
+  high_score: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  }
 },
 {
   timestamps: false
