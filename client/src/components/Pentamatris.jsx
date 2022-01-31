@@ -58,8 +58,9 @@ const Pentamatris = (props) => {
     setLevel(0);
   }
 
-  const checkHighScore = () => {
-    if(gameOver === true) {
+  const checkHighScore = (isOver = gameOver) => {
+    if(isOver) {
+      console.log(score, isOver, "TEST SCORE UPDATE")
       if(score > highScore ) {
         let token = localStorage.getItem('id_token');
         axios.put('/api/score', {high_score: score}, {headers: {'authorization': token}})
@@ -94,7 +95,7 @@ const Pentamatris = (props) => {
       if(player.pos.y < 1) {
         console.log("GameOver");
         setGameOver(true);
-        checkHighScore();
+        checkHighScore(true);
         setDropTime(null);
       }
       //set collided to true when piece eventually collides with bottom or other piece
